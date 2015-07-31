@@ -1,0 +1,11 @@
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\bin\Debug\Application.dll
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\bin\Debug\Application.pdb
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\obj\Debug\Application.dll
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\obj\Debug\Application.pdb
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\bin\Debug\Application.DTOs.dll
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\bin\Debug\Domain.dll
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\bin\Debug\Application.DTOs.pdb
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\bin\Debug\Domain.pdb
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\obj\Debug\Application.csprojResolveAssemblyReference.cache
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\bin\Debug\itextsharp.dll
+C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application\bin\Debug\itextsharp.xml
