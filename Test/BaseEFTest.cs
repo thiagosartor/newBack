@@ -11,6 +11,18 @@ namespace Test
 {
     public class BaseEFTest : DropCreateDatabaseAlways<DiarioAcademiaContext>
     {
+        public DiarioAcademiaContext _context = new DiarioAcademiaContext();
+
+        public BaseEFTest()
+        {
+            CreateDB(_context);
+        }
+
+        private void CreateDB(DiarioAcademiaContext _context)
+        {
+            _context.Set<Turma>().Add(ObjectMother.CreateTurma());
+        }
+
         protected override void Seed(DiarioAcademiaContext context)
         {
             base.Seed(context);
