@@ -15,7 +15,7 @@ namespace Test
         [TestInitialize]
         public void Initialize()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<DiarioAcademiaContext>());
+            new BaseSQLTest();
 
             _repoAula = new AulaRepositoryEF();
             _repoTurma = new TurmaRepositoryEF();
@@ -24,7 +24,7 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aula")]
-        public void Deveria_Persistir_Aula_Test()
+        public void Deveria_Persistir_Aula_SQL_Test()
         {
             _repoTurma.Add(ObjectMother.CreateTurma());
 
@@ -41,7 +41,7 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aula")]
-        public void Deveria_Buscar_Aula_Test()
+        public void Deveria_Buscar_Aula_SQL_Test()
         {
             var aulaEncontrada =  _repoAula.GetById(1);
 
@@ -51,7 +51,7 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aula")]
-        public void Deveria_Editar_Aula_Test()
+        public void Deveria_Editar_Aula_SQL_Test()
         {
             var aulaEncontrada = _repoAula.GetById(1);
             aulaEncontrada.Data = DateTime.Now.AddYears(-15);
@@ -60,13 +60,13 @@ namespace Test
 
             var aulaEditada = _repoAula.GetById(1);
 
-            Assert.AreEqual(2000, aulaEditada.Data);
+            Assert.AreEqual(2000, aulaEditada.Data.Year);
 
         }
 
         [TestMethod]
         [TestCategory("Teste de Integração Aula")]
-        public void Deveria_Buscar_Todas_Aulas_Test()
+        public void Deveria_Buscar_Todas_Aulas_SQL_Test()
         {
             var aulasEncontradas = _repoAula.GetAll();
 
@@ -75,13 +75,13 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aula")]
-        public void Deveria_Remover_Aula_Test()
+        public void Deveria_Remover_Aula_SQL_Test()
         {
             _repoAula.Delete(1);
 
             var aulasEncontradas = _repoAula.GetAll();
 
-            Assert.IsNull(aulasEncontradas);
+            Assert.IsTrue(aulasEncontradas.Count == 0);
         }
     }
 }

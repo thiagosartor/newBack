@@ -25,7 +25,7 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Persistir_Aluno_Test()
+        public void Deveria_Persistir_Aluno_ORM_Test()
         {
             _repoTurma.Add(ObjectMother.CreateTurma());
 
@@ -42,7 +42,7 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Buscar_Aluno_Test()
+        public void Deveria_Buscar_Aluno_ORM_Test()
         {
             var alunoEncontrado =  _repoAluno.GetById(1);
 
@@ -52,7 +52,7 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Editar_Aluno_Test()
+        public void Deveria_Editar_Aluno_ORM_Test()
         {
             var alunoEncontrado = _repoAluno.GetById(1);
             alunoEncontrado.Nome = "Alexandre Regis";
@@ -67,7 +67,7 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Buscar_Todas_Alunos_Test()
+        public void Deveria_Buscar_Todas_Alunos_ORM_Test()
         {
             var alunosEncontrados = _repoAluno.GetAll();
 
@@ -76,22 +76,22 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Remover_Aluno_Test()
+        public void Deveria_Remover_Aluno_ORM_Test()
         {
             _repoAluno.Delete(1);
 
             var alunosEncontrados = _repoAluno.GetAll();
 
-            Assert.IsNull(alunosEncontrados);
+            Assert.IsTrue(alunosEncontrados.Count == 0);
         }
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Buscar_Alunos_Por_TurmaId_Test()
+        public void Deveria_Buscar_Alunos_Por_TurmaId_ORM_Test()
         {
-           var turmas = _repoAluno.GetAllByTurmaId(1);
+           var alunos = _repoAluno.GetAllByTurmaId(0);
 
-            Assert.IsNull(turmas);
+            Assert.IsTrue(alunos.Count > 0);
         }
     }
 }

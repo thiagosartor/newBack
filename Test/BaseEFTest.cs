@@ -15,12 +15,7 @@ namespace Test
 
         public BaseEFTest()
         {
-            CreateDB(_context);
-        }
-
-        private void CreateDB(DiarioAcademiaContext _context)
-        {
-            _context.Set<Turma>().Add(ObjectMother.CreateTurma());
+            Seed(_context);
         }
 
         protected override void Seed(DiarioAcademiaContext context)

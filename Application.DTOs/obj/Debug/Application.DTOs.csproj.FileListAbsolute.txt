@@ -5,3 +5,10 @@ C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application.DTOs
 C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application.DTOs\obj\Debug\Application.DTOs.csprojResolveAssemblyReference.cache
 C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application.DTOs\obj\Debug\Application.DTOs.dll
 C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Application.DTOs\obj\Debug\Application.DTOs.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application.DTOs\bin\Debug\Application.DTOs.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application.DTOs\bin\Debug\Application.DTOs.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application.DTOs\bin\Debug\Domain.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application.DTOs\bin\Debug\Domain.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application.DTOs\obj\Debug\Application.DTOs.csprojResolveAssemblyReference.cache
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application.DTOs\obj\Debug\Application.DTOs.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application.DTOs\obj\Debug\Application.DTOs.pdb

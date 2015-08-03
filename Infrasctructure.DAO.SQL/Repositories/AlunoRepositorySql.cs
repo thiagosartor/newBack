@@ -19,11 +19,11 @@ namespace Infrastructure.DAO.SQL.Repositories
                ,[Nome]
                ,[Turma_Id])
          VALUES
-               ({0} Endereco_Cep,
-                {0} Endereco_Bairro,
-                {0} Endereco_Localidade,
-                {0} Endereco_Uf,
-                {0} Nome,
+               ({0}Endereco_Cep,
+                {0}Endereco_Bairro,
+                {0}Endereco_Localidade,
+                {0}Endereco_Uf,
+                {0}Nome,
                 {0}Turma_Id)";
 
         public const string SqlUpdate =
@@ -32,9 +32,9 @@ namespace Infrastructure.DAO.SQL.Repositories
                ,[Endereco_Bairro] = {0}Endereco_Bairro
                ,[Endereco_Localidade] = {0}Endereco_Localidade
                ,[Endereco_Uf] = {0}Endereco_Uf
-               ,[Nome] = = {0}Nome
+               ,[Nome] = {0}Nome
                ,[Turma_Id] = {0}Turma_Id
-         WHERE [Id] = {0}Id";
+          WHERE [Id] = {0}Id";
 
         public const string SqlDelete =
          "DELETE FROM TBAluno " +
@@ -97,8 +97,7 @@ namespace Infrastructure.DAO.SQL.Repositories
 
         public void Update(Aluno entity)
         {
-            var alunoEditado = GetById(entity.Id);
-            Db.Update(SqlUpdate, Take(alunoEditado));
+            Db.Update(SqlUpdate, Take(entity));
         }
 
         private static Aluno Make(IDataReader reader)
@@ -106,7 +105,11 @@ namespace Infrastructure.DAO.SQL.Repositories
             Aluno aluno = new Aluno();
             aluno.Id = Convert.ToInt32(reader["Id"]);
             aluno.Nome = Convert.ToString(reader["Nome"]);
-            aluno.Turma.Id = Convert.ToInt32(reader["TurmaId"]); //TODO: Tirei o protected da Entity
+            aluno.Turma.Id = Convert.ToInt32(reader["Turma_Id"]); //TODO: Tirei o protected da Entity
+            aluno.Endereco.Cep = Convert.ToString(reader["Endereco_Cep"]);
+            aluno.Endereco.Localidade = Convert.ToString(reader["Endereco_Localidade"]);
+            aluno.Endereco.Bairro = Convert.ToString(reader["Endereco_Bairro"]);
+            aluno.Endereco.Uf = Convert.ToString(reader["Endereco_Uf"]);
 
             return aluno;
         }
@@ -117,11 +120,11 @@ namespace Infrastructure.DAO.SQL.Repositories
             {
                 "Id", aluno.Id,
                 "Nome", aluno.Nome,
-                "TurmaId", aluno.Turma.Id,
-                "Cep", aluno.Endereco.Cep,
-                "Localidade", aluno.Endereco.Localidade,
-                "Bairro", aluno.Endereco.Bairro,
-                "UF", aluno.Endereco.Uf
+                "Turma_Id", aluno.Turma.Id,
+                "Endereco_Cep", aluno.Endereco.Cep,
+                "Endereco_Localidade", aluno.Endereco.Localidade,
+                "Endereco_Bairro", aluno.Endereco.Bairro,
+                "Endereco_Uf", aluno.Endereco.Uf
             };
         }
     }

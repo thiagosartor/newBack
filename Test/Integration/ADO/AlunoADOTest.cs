@@ -16,13 +16,17 @@ namespace Test
         [TestInitialize]
         public void Initialize()
         {
+            Database.SetInitializer(new BaseEFTest());
+
+            new BaseSQLTest();
+
             _repoAluno = new AlunoRepositorySql();
             _repoTurma = new TurmaRepositorySql();
         }
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Persistir_Aluno_Test()
+        public void Deveria_Persistir_Aluno_SQL_Test()
         {
             _repoTurma.Add(ObjectMother.CreateTurma());
 
@@ -39,7 +43,7 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Buscar_Aluno_Test()
+        public void Deveria_Buscar_Aluno_SQL_Test()
         {
             var alunoEncontrado =  _repoAluno.GetById(1);
 
@@ -49,22 +53,22 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Editar_Aluno_Test()
+        public void Deveria_Editar_Aluno_SQL_Test()
         {
             var alunoEncontrado = _repoAluno.GetById(1);
             alunoEncontrado.Nome = "Alexandre Regis";
 
             _repoAluno.Update(alunoEncontrado);
 
-            var alunoEditada = _repoAluno.GetById(1);
+            var alunoEditado = _repoAluno.GetById(1);
 
-            Assert.AreEqual("Alexandre Regis", alunoEditada.Nome);
+            Assert.AreEqual("Alexandre Regis", alunoEditado.Nome);
 
         }
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Buscar_Todas_Alunos_Test()
+        public void Deveria_Buscar_Todas_Alunos_SQL_Test()
         {
             var alunosEncontrados = _repoAluno.GetAll();
 
@@ -73,13 +77,13 @@ namespace Test
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
-        public void Deveria_Remover_Aluno_Test()
+        public void Deveria_Remover_Aluno_SQL_Test()
         {
             _repoAluno.Delete(1);
 
             var alunosEncontrados = _repoAluno.GetAll();
 
-            Assert.IsNull(alunosEncontrados);
+            Assert.IsTrue(alunosEncontrados.Count == 0);
         }
     }
 }
