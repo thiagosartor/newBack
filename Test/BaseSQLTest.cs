@@ -24,6 +24,7 @@ namespace Test
                                               INSERT INTO [TBAula] (Data, Turma_Id, ChamadaRealizada) VALUES (GETDATE(), 1 , 0)";
         public BaseSQLTest()
         {
+            new BaseEFTest();
             Db.Update(SqlCleanDB);
             Db.Insert(SqlInsertTest);
         }
