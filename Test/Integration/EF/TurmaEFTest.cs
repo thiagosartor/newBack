@@ -1,18 +1,29 @@
 ﻿using Domain.Entities;
 using Infrastructure.DAO.ORM.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
+using System.IO;
 
 namespace Test
 {
     [TestClass]
+    [DeploymentItem("App_Data\\TesteDiario.mdf")]
     public class TurmaEFTest
     {
         public TurmaRepositoryEF _repo;
 
+        public static SqlProviderServices EnsureAssemblySqlServerIsCopied { get; set; }
+
         [TestInitialize]
         public void Initialize()
         {
+
+            string absolute = Path.GetFullPath("TesteDiario.mdf");
+            absolute = Path.GetDirectoryName(absolute);
+            AppDomain.CurrentDomain.SetData("DataDirectory", absolute);
+
             Database.SetInitializer(new BaseEFTest()); // Não está funcionando
 
             new BaseSQLTest();

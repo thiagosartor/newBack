@@ -16,8 +16,6 @@ namespace Test
         [TestInitialize]
         public void Initialize()
         {
-            Database.SetInitializer(new BaseEFTest());
-
             new BaseSQLTest();
 
             _repoAluno = new AlunoRepositorySql();
@@ -38,7 +36,9 @@ namespace Test
 
             _repoAluno.Add(aluno);
 
-            Assert.IsNotNull(aluno);
+            var alunos = _repoAluno.GetAll();
+
+            Assert.IsTrue(alunos.Count > 0);
         }
 
         [TestMethod]

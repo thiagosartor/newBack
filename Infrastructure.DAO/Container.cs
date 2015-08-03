@@ -36,7 +36,7 @@ namespace Infrastructure.DAO
                                 .DirectoryName;
 
             string fileName
-                    = ConfigurationSettings.AppSettings["Data.Access"];
+                    = ConfigurationSettings.AppSettings["Infrasctructure.DAO"];
 
             string assemblyFile
                     = string.Format("{0}\\{1}", path, fileName);

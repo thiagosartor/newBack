@@ -4,6 +4,7 @@ using System.Configuration;
 using Domain.Entities;
 using Domain.Contracts;
 using Infrastructure.DAO;
+using System.IO;
 
 namespace Test.IoC
 {
@@ -13,7 +14,7 @@ namespace Test.IoC
         [TestInitialize]
         public void Initialize()
         {
-            ConfigurationManager.AppSettings["Data.Access"] = "Infrasctructure.DAO.ORM.dll";
+            ConfigurationManager.AppSettings["Infrasctructure.DAO"] = "Infrasctructure.DAO.ORM.dll";
         }
 
         [TestMethod]

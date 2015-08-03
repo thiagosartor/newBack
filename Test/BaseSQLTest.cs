@@ -23,12 +23,13 @@ namespace Test
                                               INSERT INTO [TBAluno] (Nome, Turma_Id) VALUES ('Aluno Teste', 1)
                                               INSERT INTO [TBAula] (Data, Turma_Id, ChamadaRealizada) VALUES (GETDATE(), 1 , 0)";
 
-        public const string SqlVerificaBanco = @"SELECT* FROM sys.databases WHERE name = 'TesteDiario'";
+        public const string SqlVerificaBanco = @"";
 
         
         public BaseSQLTest()
         {
             new BaseEFTest();// Se o banco não existe ele cria
+
             Db.Update(SqlCleanDB);
             Db.Insert(SqlInsertTest);
         }
