@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq.Expressions;
 
-namespace Infrastructure.DAO.SQL.Repositories
+namespace Infrastructure.DAO.Repositories
 {
     public class TurmaRepositorySql : ITurmaRepository
     {
