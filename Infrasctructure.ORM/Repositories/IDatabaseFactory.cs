@@ -1,6 +1,10 @@
-﻿namespace Infrastructure.DAO.ORM.Repositories
+﻿using Infrasctructure.DAO.ORM.Contexts;
+using System;
+
+namespace Infrastructure.DAO.ORM.Repositories
 {
-    public interface IDatabaseFactory
+    public interface IDatabaseFactory : IDisposable
     {
+        DiarioAcademiaContext Get();
     }
 }

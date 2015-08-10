@@ -9,10 +9,6 @@ C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Domain\bin\Debug
 C:\Users\thiago.sartor\OneDrive\Públicos\Softwares\DBInjection\Domain\bin\Debug\Ninject.xml
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Domain\bin\Debug\Domain.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Domain\bin\Debug\Domain.pdb
-C:\Users\thiago.sartor\Documents\GitHub\newBack\Domain\bin\Debug\Infrastructure.DAO.dll
-C:\Users\thiago.sartor\Documents\GitHub\newBack\Domain\bin\Debug\Ninject.dll
-C:\Users\thiago.sartor\Documents\GitHub\newBack\Domain\bin\Debug\Infrastructure.DAO.pdb
-C:\Users\thiago.sartor\Documents\GitHub\newBack\Domain\bin\Debug\Ninject.xml
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Domain\obj\Debug\Domain.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Domain\obj\Debug\Domain.pdb

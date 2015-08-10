@@ -53,12 +53,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Turma.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Infrastructure.DAO\Infrastructure.DAO.csproj">
-      <Project>{ba41785c-9f98-4aff-84e4-01735be2f4cb}</Project>
-      <Name>Infrastructure.DAO</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -14,7 +14,7 @@ namespace Test
             .WithConstructor(() =>
             new Turma(2014)).Build();
         }
-
+        
         public static Aluno CreateAluno(Turma turma)
         {
             return Builder<Aluno>.CreateNew()
