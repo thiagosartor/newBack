@@ -8,7 +8,7 @@ namespace Infrastructure.DAO.ADO
 {
     public delegate T ConverterDelegate<T>(IDataReader reader);
 
-    public static class Db
+    public static class RepositoryBaseADO
     {
         #region Attributos
 

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.DAO.EF
+namespace Infrastructure.DAO.Common
 {
     public class UnitOfWork : IUnitOfWork
     {

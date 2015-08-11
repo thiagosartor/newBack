@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq.Expressions;
 
-namespace Infrastructure.DAO
+namespace Infrastructure.DAO.Repositories
 {
     public class TurmaRepositorySql : ITurmaRepository
     {
@@ -36,7 +36,7 @@ namespace Infrastructure.DAO
         {
             try
             {
-                Db.Insert(SqlInsert, Take(turma));
+                RepositoryBaseADO.Insert(SqlInsert, Take(turma));
             }
             catch (Exception te)
             {
@@ -50,7 +50,7 @@ namespace Infrastructure.DAO
             try
             {
                 var turmaRemovida = GetById(id);
-                Db.Delete(SqlDelete, Take(turmaRemovida));
+                RepositoryBaseADO.Delete(SqlDelete, Take(turmaRemovida));
             }
             catch (Exception te)
             {
@@ -63,7 +63,7 @@ namespace Infrastructure.DAO
             try
             {
                 var turmaRemovida = GetById(entity.Id);
-                Db.Delete(SqlDelete, Take(turmaRemovida));
+                RepositoryBaseADO.Delete(SqlDelete, Take(turmaRemovida));
             }
             catch (Exception te)
             {
@@ -75,7 +75,7 @@ namespace Infrastructure.DAO
         {
             try
             {
-                return Db.GetAll<Turma>(SqlSelect, Make);
+                return RepositoryBaseADO.GetAll<Turma>(SqlSelect, Make);
             }
             catch (Exception te)
             {
@@ -89,7 +89,7 @@ namespace Infrastructure.DAO
             {
                 var parms = new object[] { "Id", id };
 
-                return Db.Get(SqlSelectbId, Make, parms);
+                return RepositoryBaseADO.Get(SqlSelectbId, Make, parms);
             }
             catch (Exception te)
             {
@@ -102,7 +102,7 @@ namespace Infrastructure.DAO
         {
             try
             {
-                Db.Update(SqlUpdate, Take(entity));
+                RepositoryBaseADO.Update(SqlUpdate, Take(entity));
             }
             catch (Exception te)
             {

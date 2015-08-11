@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.DAO.EF
+﻿namespace Infrastructure.DAO.Common
 {
     public interface IUnitOfWork
     {
