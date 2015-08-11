@@ -11,3 +11,12 @@ C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Nin
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\obj\Debug\Infrastructure.DAO.csprojResolveAssemblyReference.cache
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\obj\Debug\Infrastructure.DAO.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\obj\Debug\Infrastructure.DAO.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Infrastructure.DAO.dll.config
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Domain.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\EntityFramework.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Infrasctructure.DAO.ORM.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Domain.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Infrasctructure.DAO.ORM.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\EntityFramework.xml
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\EntityFramework.SqlServer.xml

@@ -4,7 +4,7 @@ using Infrasctructure.DAO.ORM.Contexts;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Infrastructure.DAO.Repositories
+namespace Infrastructure.DAO
 {
     public class TurmaRepositoryEF : ITurmaRepository
     {

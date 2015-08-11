@@ -20,3 +20,7 @@ C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.DAO.SQL\bin\Debu
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.DAO.SQL\obj\Debug\Infrasctructure.DAO.SQL.csprojResolveAssemblyReference.cache
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.DAO.SQL\obj\Debug\Infrasctructure.DAO.SQL.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.DAO.SQL\obj\Debug\Infrasctructure.DAO.SQL.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.DAO.SQL\bin\Debug\Infrasctructure.DAO.ORM.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.DAO.SQL\bin\Debug\EntityFramework.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.DAO.SQL\bin\Debug\Infrasctructure.DAO.ORM.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.DAO.SQL\bin\Debug\EntityFramework.xml

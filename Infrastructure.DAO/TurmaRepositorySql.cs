@@ -5,19 +5,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq.Expressions;
 
-namespace Infrastructure.DAO.Repositories
+namespace Infrastructure.DAO
 {
     public class TurmaRepositorySql : ITurmaRepository
     {
-
-        public AdoNetUnitOfWork _uow;
-        public RepositoryBase<Turma> _repo;
-        public TurmaRepositorySql(IUnitOfWork uow, RepositoryBase<Turma> repo)
-        {
-            _uow = (AdoNetUnitOfWork)uow;
-            _repo = repo;
-        }
-
         #region Querys
 
         public const string SqlInsert =
