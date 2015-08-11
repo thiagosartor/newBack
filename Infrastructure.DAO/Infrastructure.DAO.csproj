@@ -56,7 +56,9 @@
   <ItemGroup>
     <Compile Include="Common\Container.cs" />
     <Compile Include="ADO\RepositoryBaseADO.cs" />
+    <Compile Include="Common\IDatabaseFactory.cs" />
     <Compile Include="Common\IUnitOfWork.cs" />
+    <Compile Include="Contexts\DiarioAcademiaContext.cs" />
     <Compile Include="EF\RepositoryBaseEF.cs" />
     <Compile Include="Common\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
