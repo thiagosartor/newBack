@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 
-namespace Infrastructure.DAO
+namespace Infrastructure.DAO.ADO
 {
     public delegate T ConverterDelegate<T>(IDataReader reader);
 

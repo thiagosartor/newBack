@@ -1,5 +1,6 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
+using Infrastructure.DAO.ADO;
 using System;
 using System.Collections.Generic;
 using System.Data;
