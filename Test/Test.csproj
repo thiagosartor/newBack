@@ -74,6 +74,7 @@
     <Compile Include="Application\PresencaServiceTests.cs" />
     <Compile Include="BaseEFTest.cs" />
     <Compile Include="BaseSQLTest.cs" />
+    <Compile Include="DAO\MultipleRepositoryTest.cs" />
     <Compile Include="Integration\ADO\AlunoADOTest.cs" />
     <Compile Include="Integration\ADO\AulaADOTest.cs" />
     <Compile Include="Integration\ADO\TurmaADOTest.cs" />
@@ -124,9 +125,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

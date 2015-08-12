@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Infrastructure.DAO.Common
 {
-    public class UnitOfWork : IUnitOfWork
+    public class EFUnitOfWork : IUnitOfWork
     {
         private DiarioAcademiaContext dbContext = null;
 
@@ -21,7 +21,7 @@ namespace Infrastructure.DAO.Common
             }
         }
 
-        public UnitOfWork(IDatabaseFactory dbFactory)
+        public EFUnitOfWork(IDatabaseFactory dbFactory)
         {
             this.dbFactory = dbFactory;
         }
