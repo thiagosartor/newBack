@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.DAO.Common
+namespace Infrastructure.DAO.IoC
 {
     public static class Container
     {
