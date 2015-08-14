@@ -58,6 +58,10 @@
       <Project>{c35cde6f-aebb-46c5-93e5-c061c08bc2ec}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.DAO\Infrastructure.DAO.csproj">
+      <Project>{ba41785c-9f98-4aff-84e4-01735be2f4cb}</Project>
+      <Name>Infrastructure.DAO</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

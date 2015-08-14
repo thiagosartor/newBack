@@ -26,3 +26,5 @@ C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Ni
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\obj\Debug\Infrasctructure.DAO.ORM.csprojResolveAssemblyReference.cache
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\obj\Debug\Infrasctructure.DAO.ORM.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\obj\Debug\Infrasctructure.DAO.ORM.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Infrastructure.DAO.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Infrastructure.DAO.pdb

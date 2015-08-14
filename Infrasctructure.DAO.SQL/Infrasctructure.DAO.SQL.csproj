@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Db.cs" />
+    <Compile Include="Common\AdoNetFactory.cs" />
+    <Compile Include="Common\ADOUnitOfWork.cs" />
+    <Compile Include="Common\RepositoryBaseADO.cs" />
     <Compile Include="Modules\AdoNetNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlunoRepositorySql.cs" />

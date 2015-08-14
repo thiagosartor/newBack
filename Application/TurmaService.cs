@@ -1,6 +1,7 @@
 ﻿using Application.DTOs;
 using Domain.Contracts;
 using Domain.Entities;
+using Infrastructure.DAO.Common;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,9 +23,10 @@ namespace Application.Services
     public class TurmaService : ITurmaService
     {
         private ITurmaRepository _turmaRepository;
-
-        public TurmaService(ITurmaRepository repoTurma)
+        private IUnitOfWork _unitOfWork;
+        public TurmaService(ITurmaRepository repoTurma, IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _turmaRepository = repoTurma;
         }
 

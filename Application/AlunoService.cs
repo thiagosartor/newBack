@@ -23,7 +23,7 @@ namespace Application.Services
 
         IList<AlunoDTO> GetAll();
 
-        IList<AlunoDTO> GetAllByTurma(int ano);
+        IList<AlunoDTO> GetAllByTurmaId(int ano);
     }
 
     public class AlunoService : IAlunoService
@@ -101,9 +101,9 @@ namespace Application.Services
                 .ToList();
         }
 
-        public IList<AlunoDTO> GetAllByTurma(int ano)
+        public IList<AlunoDTO> GetAllByTurmaId(int id)
         {
-            return _alunoRepository.GetAllByTurma(ano)
+            return _alunoRepository.GetAllByTurmaId(id)
               .Select(aluno => new AlunoDTO(aluno))
               .ToList();
         }
@@ -131,7 +131,7 @@ namespace Application.Services
                 doc.Add(new Paragraph("Relatório de presenças - Academia do prgramador " + ano + ":\n\n"));
                 doc.Add(new Paragraph("Alunos/Presenças/Faltas:\n\n"));
 
-                foreach (var listaAluno in GetAllByTurma(ano))
+                foreach (var listaAluno in GetAllByTurmaId(ano))
                 {
                     doc.Add(new Paragraph(listaAluno.Descricao));
                 }

@@ -1,5 +1,7 @@
 ﻿using Domain.Entities;
 using Infrasctructure.DAO.ORM.Contexts;
+using Infrastructure.DAO.Common;
+using Infrastructure.DAO.ORM.Common;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,16 +13,29 @@ namespace Test
 {
     public class BaseEFTest : DropCreateDatabaseAlways<DiarioAcademiaContext>
     {
-        public DiarioAcademiaContext _context = new DiarioAcademiaContext();
+        public DiarioAcademiaContext _context;
+        public IUnitOfWork _uow;
+
+        public const string SqlCleanDB = @"DBCC CHECKIDENT ('[TBPresenca]', RESEED, 0)
+                                           DBCC CHECKIDENT ('[TBAula]', RESEED, 0)
+                                           DBCC CHECKIDENT ('[TBAluno]', RESEED, 0)
+                                           DBCC CHECKIDENT ('[TBTurma]', RESEED, 0)
+
+                                           DELETE FROM TBPresenca
+                                           DELETE FROM TBAula
+                                           DELETE FROM TBAluno
+                                           DELETE FROM TBTurma";
 
         public BaseEFTest()
         {
+            _context = new DiarioAcademiaContext();
+            _uow = new EFUnitOfWork();
             Seed(_context);
         }
 
         protected override void Seed(DiarioAcademiaContext context)
         {
-            base.Seed(context);
+            context.Database.ExecuteSqlCommand(SqlCleanDB);
 
             //Adiciona uma turma
             context.Set<Turma>().Add(ObjectMother.CreateTurma());
@@ -37,6 +52,7 @@ namespace Test
             //Adiciona uma aula
             context.Set<Aula>().Add(ObjectMother.CreateAula(turmEncontrada));
 
+            _uow.Commit();
         }
     }
 }

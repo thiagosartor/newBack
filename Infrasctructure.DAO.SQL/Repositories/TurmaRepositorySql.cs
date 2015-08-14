@@ -52,7 +52,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var turmaRemovida = GetById(id);
-                Db.Delete(SqlDelete, Take(turmaRemovida));
+                RepositoryBaseADO.Delete(SqlDelete, Take(turmaRemovida));
             }
             catch (Exception te)
             {
@@ -65,7 +65,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var turmaRemovida = GetById(entity.Id);
-                Db.Delete(SqlDelete, Take(turmaRemovida));
+                RepositoryBaseADO.Delete(SqlDelete, Take(turmaRemovida));
             }
             catch (Exception te)
             {
@@ -77,7 +77,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                return Db.GetAll<Turma>(SqlSelect, Make);
+                return RepositoryBaseADO.GetAll<Turma>(SqlSelect, Make);
             }
             catch (Exception te)
             {
@@ -91,7 +91,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             {
                 var parms = new object[] { "Id", id };
 
-                return Db.Get(SqlSelectbId, Make, parms);
+                return RepositoryBaseADO.Get(SqlSelectbId, Make, parms);
             }
             catch (Exception te)
             {
@@ -104,7 +104,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                Db.Update(SqlUpdate, Take(entity));
+                RepositoryBaseADO.Update(SqlUpdate, Take(entity));
             }
             catch (Exception te)
             {

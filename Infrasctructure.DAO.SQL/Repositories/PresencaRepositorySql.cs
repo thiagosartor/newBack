@@ -26,7 +26,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var presencaRemovida = GetById(id);
-                Db.Delete(SqlDelete, Take(presencaRemovida));
+                RepositoryBaseADO.Delete(SqlDelete, Take(presencaRemovida));
             }
             catch (Exception te)
             {

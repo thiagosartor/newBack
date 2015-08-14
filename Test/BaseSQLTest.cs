@@ -30,8 +30,8 @@ namespace Test
         {
             new BaseEFTest();// Se o banco não existe ele cria
 
-            Db.Update(SqlCleanDB);
-            Db.Insert(SqlInsertTest);
+            RepositoryBaseADO.Update(SqlCleanDB);
+            RepositoryBaseADO.Insert(SqlInsertTest);
         }
     }
 }

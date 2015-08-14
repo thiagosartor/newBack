@@ -1,9 +1,8 @@
-﻿using Domain.Contracts;
+﻿using Application.DTOs;
+using Application.Services;
+using Domain.Contracts;
 using Infrastructure.DAO.Common;
-using Infrastructure.DAO.DTOs;
 using Infrastructure.DAO.IoC;
-using Infrastructure.DAO.Repositories;
-using Infrastructure.DAO.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

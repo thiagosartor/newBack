@@ -20,3 +20,7 @@ C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\itextsharp
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\obj\Debug\Application.csprojResolveAssemblyReference.cache
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\obj\Debug\Application.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\obj\Debug\Application.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Infrastructure.DAO.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Ninject.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Infrastructure.DAO.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Ninject.xml
