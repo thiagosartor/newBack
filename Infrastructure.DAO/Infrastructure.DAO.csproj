@@ -54,17 +54,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AdoNetUowFactory.cs" />
+    <Compile Include="Common\Factorys\AdoNetFactory.cs" />
+    <Compile Include="Common\Factorys\EntityFrameworkFactory.cs" />
     <Compile Include="IoC\Container.cs" />
     <Compile Include="ADO\RepositoryBaseADO.cs" />
-    <Compile Include="Common\ADOUnitOfWork.cs" />
-    <Compile Include="Common\IDatabaseFactory.cs" />
-    <Compile Include="Common\IUnitOfWork.cs" />
-    <Compile Include="Common\UnitOfWorkFactory.cs" />
+    <Compile Include="Common\Uow\ADOUnitOfWork.cs" />
+    <Compile Include="Common\Uow\IUnitOfWork.cs" />
+    <Compile Include="Common\Factorys\UnitOfWorkFactory.cs" />
     <Compile Include="Contexts\DiarioAcademiaContext.cs" />
     <Compile Include="DTOs\TurmaDTO.cs" />
     <Compile Include="EF\RepositoryBaseEF.cs" />
-    <Compile Include="Common\EFUnitOfWork.cs" />
+    <Compile Include="Common\Uow\EFUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\TurmaRepositoryEF.cs" />
     <Compile Include="Repositories\TurmaRepositorySql.cs" />

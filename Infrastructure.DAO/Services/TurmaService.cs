@@ -25,20 +25,27 @@ namespace Infrastructure.DAO.Services
     {
         private IUnitOfWork _unitOfWork;
         private ITurmaRepository _turmaRepository;
+        private UnitOfWorkFactory _uowFactory;
 
         public TurmaService(ITurmaRepository repoTurma, IUnitOfWork unitOfWork)
         {
             _turmaRepository = repoTurma;
             _unitOfWork = unitOfWork;
-    }
+             _uowFactory = new AdoNetFactory();
+            //_uowFactory = new EntityFrameworkFactory();
+        }
 
         public void Add(TurmaDTO turmaDto)
         {
             Turma turma = new Turma(turmaDto.Ano);
 
-            _turmaRepository.Add(turma);
+            using (var uow = _uowFactory.Create())
+            {
+                _turmaRepository.Add(turma);               
 
-            _unitOfWork.Commit();
+                uow.Commit();
+            }
+         
         }
 
         public void Update(TurmaDTO turmaDto)

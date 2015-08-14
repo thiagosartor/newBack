@@ -14,7 +14,7 @@ namespace Test
         {
             new BaseSQLTest();
 
-            _repo = new TurmaRepositorySql();
+            //_repo = new TurmaRepositorySql();
         }
 
         [TestMethod]

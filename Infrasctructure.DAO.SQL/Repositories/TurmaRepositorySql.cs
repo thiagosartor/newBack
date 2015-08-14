@@ -1,5 +1,6 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
+using Infrastructure.DAO.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,6 +10,7 @@ namespace Infrastructure.DAO.SQL.Repositories
 {
     public class TurmaRepositorySql : ITurmaRepository
     {
+
         #region Querys
 
         public const string SqlInsert =
@@ -35,12 +37,13 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                Db.Insert(SqlInsert, Take(turma));
+                
             }
             catch (Exception te)
             {
                 throw new Exception("Erro ao tentar adicionar uma Turma!" + te.Message);
             }
+
             return turma;
         }
 

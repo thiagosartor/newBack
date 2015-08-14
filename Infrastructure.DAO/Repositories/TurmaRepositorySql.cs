@@ -1,6 +1,7 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
 using Infrastructure.DAO.ADO;
+using Infrastructure.DAO.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,6 +11,7 @@ namespace Infrastructure.DAO.Repositories
 {
     public class TurmaRepositorySql : ITurmaRepository
     {
+
         #region Querys
 
         public const string SqlInsert =
@@ -36,12 +38,16 @@ namespace Infrastructure.DAO.Repositories
         {
             try
             {
-                RepositoryBaseADO.Insert(SqlInsert, Take(turma));
+                //using (var cmd = CreateCommand())
+                //{
+                //    cmd.CommandText = SqlInsert;
+                //}
             }
             catch (Exception te)
             {
                 throw new Exception("Erro ao tentar adicionar uma Turma!" + te.Message);
             }
+
             return turma;
         }
 
@@ -50,7 +56,7 @@ namespace Infrastructure.DAO.Repositories
             try
             {
                 var turmaRemovida = GetById(id);
-                RepositoryBaseADO.Delete(SqlDelete, Take(turmaRemovida));
+                //RepositoryBaseADO.Delete(SqlDelete, Take(turmaRemovida));
             }
             catch (Exception te)
             {
@@ -63,7 +69,7 @@ namespace Infrastructure.DAO.Repositories
             try
             {
                 var turmaRemovida = GetById(entity.Id);
-                RepositoryBaseADO.Delete(SqlDelete, Take(turmaRemovida));
+                //RepositoryBaseADO.Delete(SqlDelete, Take(turmaRemovida));
             }
             catch (Exception te)
             {
@@ -75,7 +81,7 @@ namespace Infrastructure.DAO.Repositories
         {
             try
             {
-                return RepositoryBaseADO.GetAll<Turma>(SqlSelect, Make);
+                return null;//RepositoryBaseADO.GetAll<Turma>(SqlSelect, Make);
             }
             catch (Exception te)
             {
@@ -89,7 +95,7 @@ namespace Infrastructure.DAO.Repositories
             {
                 var parms = new object[] { "Id", id };
 
-                return RepositoryBaseADO.Get(SqlSelectbId, Make, parms);
+                return null; //RepositoryBaseADO.Get(SqlSelectbId, Make, parms);
             }
             catch (Exception te)
             {
@@ -102,7 +108,7 @@ namespace Infrastructure.DAO.Repositories
         {
             try
             {
-                RepositoryBaseADO.Update(SqlUpdate, Take(entity));
+               // RepositoryBaseADO.Update(SqlUpdate, Take(entity));
             }
             catch (Exception te)
             {

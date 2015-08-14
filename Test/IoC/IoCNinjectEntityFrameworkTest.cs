@@ -5,6 +5,7 @@ using Domain.Entities;
 using Domain.Contracts;
 using Infrastructure.DAO;
 using System.IO;
+using Infrastructure.DAO.IoC;
 
 namespace Test.IoC
 {

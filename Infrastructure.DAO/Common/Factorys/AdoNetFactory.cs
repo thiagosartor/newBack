@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.DAO.Common
 {
-    public class AdoNetUowFactory : UnitOfWorkFactory
+    public class AdoNetFactory : UnitOfWorkFactory
     {
         #region Attributos
 
@@ -30,9 +30,8 @@ namespace Infrastructure.DAO.Common
         public override IUnitOfWork Create()
         {
             var connection = new SqlConnection(connectionString);
-            connection.Open();
 
-            return new ADOUnitOfWork(connection, true);
+            return new ADOUnitOfWork(connection);
         }
     }
 }

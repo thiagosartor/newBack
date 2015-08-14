@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infrastructure.DAO.Common;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -6,183 +7,161 @@ using System.Data.Common;
 
 namespace Infrastructure.DAO.ADO
 {
-    public delegate T ConverterDelegate<T>(IDataReader reader);
+//    public delegate T ConverterDelegate<T>(IDataReader reader);
 
-    public static class RepositoryBaseADO
-    {
-        #region Attributos
+//    public class RepositoryBaseADO
+//    {
+//        private ADOUnitOfWork _uow;
 
-        private static readonly string connectionStringName =
-            ConfigurationManager.AppSettings.Get("connectionDB");
+//        public RepositoryBaseADO(ADOUnitOfWork uow)
+//        {
+//            _uow = uow;
+//        }
 
-        private static readonly string providerName =
-            ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName;
+//        public int Insert(string sql, object[] parms = null)
+//        {
+//            sql = string.Format(sql, GetParameterPrefix());
 
-        private static readonly string connectionString =
-            ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
+//            using (IDbCommand command = _uow.CreateCommand())
+//            {
+//                command.Connection = _uow.connection;
+//                command.SetParameters(parms);                     // Extension method
+//                command.CommandText = sql.AppendIdentitySelect(); // Extension method
 
-        private static readonly DbProviderFactory factory =
-            DbProviderFactories.GetFactory(providerName);
+//                int id = Convert.ToInt32(command.ExecuteScalar());
 
-        #endregion Attributos
+//                return id;
+//            }
 
-        public static int Insert(string sql, object[] parms = null)
-        {
-            sql = string.Format(sql, GetParameterPrefix());
+//        }
 
-            using (var connection = factory.CreateConnection())
-            {
-                connection.ConnectionString = connectionString;
+//        public void Update(string sql, object[] parms = null)
+//        {
+//            sql = string.Format(sql, GetParameterPrefix());
 
-                using (DbCommand command = factory.CreateCommand())
-                {
-                    command.Connection = connection;
-                    command.SetParameters(parms);                     // Extension method
-                    command.CommandText = sql.AppendIdentitySelect(); // Extension method
 
-                    connection.Open();
+//            connection.ConnectionString = connectionString;
 
-                    int id = Convert.ToInt32(command.ExecuteScalar());
+//            using (var command = factory.CreateCommand())
+//            {
+//                command.Connection = connection;
+//                command.CommandText = sql;
+//                command.SetParameters(parms);
 
-                    return id;
-                }
-            }
-        }
+//                connection.Open();
+//                command.ExecuteNonQuery();
+//            }
 
-        public static void Update(string sql, object[] parms = null)
-        {
-            sql = string.Format(sql, GetParameterPrefix());
+//        }
 
-            using (var connection = factory.CreateConnection())
-            {
-                connection.ConnectionString = connectionString;
+//        public void Delete(string sql, object[] parms = null)
+//        {
+//            Update(sql, parms);
+//        }
 
-                using (var command = factory.CreateCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = sql;
-                    command.SetParameters(parms);
+//        public List<T> GetAll<T>(string sql, ConverterDelegate<T> convert, object[] parms = null)
+//        {
+//            sql = string.Format(sql, GetParameterPrefix());
 
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
 
-        public static void Delete(string sql, object[] parms = null)
-        {
-            Update(sql, parms);
-        }
+//            connection.ConnectionString = connectionString;
 
-        public static List<T> GetAll<T>(string sql, ConverterDelegate<T> convert, object[] parms = null)
-        {
-            sql = string.Format(sql, GetParameterPrefix());
+//            using (var command = factory.CreateCommand())
+//            {
+//                command.Connection = connection;
+//                command.CommandText = sql;
+//                command.SetParameters(parms);
 
-            using (var connection = factory.CreateConnection())
-            {
-                connection.ConnectionString = connectionString;
+//                var list = new List<T>();
+//                var reader = command.ExecuteReader();
 
-                using (var command = factory.CreateCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = sql;
-                    command.SetParameters(parms);
+//                while (reader.Read())
+//                {
+//                    var obj = convert(reader);
+//                    list.Add(obj);
+//                }
 
-                    connection.Open();
+//                return list;
+//            }
 
-                    var list = new List<T>();
-                    var reader = command.ExecuteReader();
+//        }
 
-                    while (reader.Read())
-                    {
-                        var obj = convert(reader);
-                        list.Add(obj);
-                    }
+//        public T Get<T>(string sql, ConverterDelegate<T> convert, object[] parms = null)
+//        {
+//            sql = string.Format(sql, GetParameterPrefix());
 
-                    return list;
-                }
-            }
-        }
 
-        public static T Get<T>(string sql, ConverterDelegate<T> convert, object[] parms = null)
-        {
-            sql = string.Format(sql, GetParameterPrefix());
+//            connection.ConnectionString = connectionString;
 
-            using (var connection = factory.CreateConnection())
-            {
-                connection.ConnectionString = connectionString;
+//            using (var command = factory.CreateCommand())
+//            {
+//                command.Connection = connection;
+//                command.CommandText = sql;
+//                command.SetParameters(parms);  // Extension method
 
-                using (var command = factory.CreateCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = sql;
-                    command.SetParameters(parms);  // Extension method
+//                T t = default(T);
 
-                    connection.Open();
+//                var reader = command.ExecuteReader();
 
-                    T t = default(T);
+//                if (reader.Read())
+//                    t = convert(reader);
 
-                    var reader = command.ExecuteReader();
+//                return t;
+//            }
 
-                    if (reader.Read())
-                        t = convert(reader);
+//        }
 
-                    return t;
-                }
-            }
-        }
+//        #region Private methods
 
-        #region Private methods
+//        private static void SetParameters(this DbCommand command, object[] parms)
+//        {
+//            if (parms != null && parms.Length > 0)
+//            {
+//                for (int i = 0; i < parms.Length; i += 2)
+//                {
+//                    string name = GetParameterPrefix() + parms[i].ToString();
 
-        private static void SetParameters(this DbCommand command, object[] parms)
-        {
-            if (parms != null && parms.Length > 0)
-            {
-                for (int i = 0; i < parms.Length; i += 2)
-                {
-                    string name = GetParameterPrefix() + parms[i].ToString();
+//                    if (parms[i + 1] is string && (string)parms[i + 1] == "")
+//                        parms[i + 1] = null;
 
-                    if (parms[i + 1] is string && (string)parms[i + 1] == "")
-                        parms[i + 1] = null;
+//                    object value = parms[i + 1] ?? DBNull.Value;
 
-                    object value = parms[i + 1] ?? DBNull.Value;
+//                    var dbParameter = command.CreateParameter();
+//                    dbParameter.ParameterName = name;
+//                    dbParameter.Value = value;
 
-                    var dbParameter = command.CreateParameter();
-                    dbParameter.ParameterName = name;
-                    dbParameter.Value = value;
+//                    command.Parameters.Add(dbParameter);
+//                }
+//            }
+//        }
 
-                    command.Parameters.Add(dbParameter);
-                }
-            }
-        }
+//        private static string AppendIdentitySelect(this string sql)
+//        {
+//            switch (providerName)
+//            {
+//                // Microsoft Access não tem suporte a esse tipo de comando
+//                case "System.Data.OleDb": return sql;
+//                case "System.Data.SqlClient": return sql + ";SELECT SCOPE_IDENTITY()";
+//                case "System.Data.OracleClient": return sql + ";SELECT MySequence.NEXTVAL FROM DUAL";
+//                default: return sql + ";SELECT @@IDENTITY";
+//            }
+//        }
 
-        private static string AppendIdentitySelect(this string sql)
-        {
-            switch (providerName)
-            {
-                // Microsoft Access não tem suporte a esse tipo de comando
-                case "System.Data.OleDb": return sql;
-                case "System.Data.SqlClient": return sql + ";SELECT SCOPE_IDENTITY()";
-                case "System.Data.OracleClient": return sql + ";SELECT MySequence.NEXTVAL FROM DUAL";
-                default: return sql + ";SELECT @@IDENTITY";
-            }
-        }
+//        private static string GetParameterPrefix()
+//        {
+//            switch (providerName)
+//            {
+//                // Microsoft Access não tem suporte a esse tipo de comando
+//                case "System.Data.OleDb": return "@";
+//                case "System.Data.SqlClient": return "@";
+//                case "System.Data.OracleClient": return ":";
+//                case "MySql.Data.MySqlClient": return "?";
 
-        private static string GetParameterPrefix()
-        {
-            switch (providerName)
-            {
-                // Microsoft Access não tem suporte a esse tipo de comando
-                case "System.Data.OleDb": return "@";
-                case "System.Data.SqlClient": return "@";
-                case "System.Data.OracleClient": return ":";
-                case "MySql.Data.MySqlClient": return "?";
+//                default:
+//                    return "@";
+//            }
+//        }
 
-                default:
-                    return "@";
-            }
-        }
-
-        #endregion Private methods
-    }
+//        #endregion Private methods
+//    }
 }

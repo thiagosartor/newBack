@@ -9,26 +9,16 @@ namespace Infrastructure.DAO.Common
 {
     public class EFUnitOfWork : IUnitOfWork
     {
-        private DiarioAcademiaContext dbContext = null;
+        private DiarioAcademiaContext _dbContext;
 
-        private readonly IDatabaseFactory dbFactory;
-
-        protected DiarioAcademiaContext DbContext
+        public EFUnitOfWork(DiarioAcademiaContext dbContext)
         {
-            get
-            {
-                return dbContext ?? dbFactory.Get();
-            }
-        }
-
-        public EFUnitOfWork(IDatabaseFactory dbFactory)
-        {
-            this.dbFactory = dbFactory;
+            _dbContext = dbContext;
         }
 
         public void Commit()
         {
-            DbContext.SaveChanges();
+            _dbContext.SaveChanges();
         }
 
         public void CommitAndRefreshChanges()
@@ -39,7 +29,7 @@ namespace Infrastructure.DAO.Common
             {
                 try
                 {
-                    DbContext.SaveChanges();
+                    _dbContext.SaveChanges();
 
                     saveFailed = false;
                 }
@@ -47,7 +37,7 @@ namespace Infrastructure.DAO.Common
                 {
                     saveFailed = true;
 
-                    var context = ((IObjectContextAdapter)DbContext).ObjectContext;
+                    var context = ((IObjectContextAdapter)_dbContext).ObjectContext;
 
                     var refreshableObjects = (from entry in context.ObjectStateManager.GetObjectStateEntries(
                                                                  EntityState.Added
@@ -66,9 +56,9 @@ namespace Infrastructure.DAO.Common
             } while (saveFailed);
         }
 
-        public void Roolback()
+        public void Dispose()
         {
-            DbContext.Dispose();
+            _dbContext.Dispose();
         }
     }
 }

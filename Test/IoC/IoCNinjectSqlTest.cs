@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Domain.Entities;
 using Domain.Contracts;
 using Infrastructure.DAO;
+using Infrastructure.DAO.IoC;
 
 namespace Test.IoC
 {

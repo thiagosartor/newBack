@@ -1,4 +1,6 @@
-﻿namespace Infrastructure.DAO.Common
+﻿using System;
+
+namespace Infrastructure.DAO.Common
 {
     public abstract class UnitOfWorkFactory
     {
