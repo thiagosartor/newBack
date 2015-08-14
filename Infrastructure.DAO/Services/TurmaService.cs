@@ -1,5 +1,4 @@
-﻿
-using Domain.Contracts;
+﻿using Domain.Contracts;
 using Domain.Entities;
 using Infrastructure.DAO.Common;
 using Infrastructure.DAO.DTOs;
@@ -31,8 +30,8 @@ namespace Infrastructure.DAO.Services
         {
             _turmaRepository = repoTurma;
             _unitOfWork = unitOfWork;
-             _uowFactory = new AdoNetFactory();
-            //_uowFactory = new EntityFrameworkFactory();
+            //_uowFactory = new AdoNetFactory();
+            _uowFactory = new EntityFrameworkFactory();
         }
 
         public void Add(TurmaDTO turmaDto)
@@ -41,11 +40,10 @@ namespace Infrastructure.DAO.Services
 
             using (var uow = _uowFactory.Create())
             {
-                _turmaRepository.Add(turma);               
+                _turmaRepository.Add(turma);
 
                 uow.Commit();
             }
-         
         }
 
         public void Update(TurmaDTO turmaDto)

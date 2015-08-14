@@ -37,14 +37,7 @@ namespace Test.DAO
         {
             var turma = ObjectMother.CreateTurma();
 
-            _unitOfWork.Setup(u => u.Commit());
-
             _service.Add(new TurmaDTO(turma));
-
-            _unitOfWork.Object.Commit();           
-
-            _unitOfWork.Verify(u => u.Commit(), Times.Once());
-
         }
     }
 }
