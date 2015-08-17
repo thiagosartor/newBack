@@ -3,24 +3,33 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Infrastructure.DAO.ORM.Repositories;
 using System.Data.Entity;
 using Infrasctructure.DAO.ORM.Contexts;
+using Domain.Contracts;
+using Infrastructure.DAO.Common;
+using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
+using Infrastructure.DAO.ORM.Common;
 
 namespace Test
 {
     [TestClass]
     public class AulaEFTest
     {
-        public AulaRepositoryEF _repoAula;
-        public TurmaRepositoryEF _repoTurma;
+        public IAulaRepository _repoAula;
+        public ITurmaRepository _repoTurma;
+        public IUnitOfWork _uow;
+        public IDatabaseFactory _factory;
 
         [TestInitialize]
         public void Initialize()
         {
             Database.SetInitializer(new BaseEFTest());
 
-            new BaseSQLTest();
+            _factory = new DatabaseFactory();
 
-            _repoAula = new AulaRepositoryEF();
-            _repoTurma = new TurmaRepositoryEF();
+            _uow = new EFUnitOfWork(_factory);
+
+            _repoTurma = new TurmaRepositoryEF(_factory);
+
+            _repoAula = new AulaRepositoryEF(_factory);
 
         }
 

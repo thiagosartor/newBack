@@ -1,7 +1,9 @@
-﻿using Infrastructure.DAO.Common;
+﻿using Domain.Contracts;
+using Infrastructure.DAO.Common;
 using Infrastructure.DAO.ORM.Common;
 using Infrastructure.DAO.ORM.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using System.Data.Entity;
 
 namespace Test
@@ -9,24 +11,23 @@ namespace Test
     [TestClass]
     public class AlunoEFTest
     {
-        public AlunoRepositoryEF _repoAluno;
-        public TurmaRepositoryEF _repoTurma;
-        public EntityFrameworkFactory _uowFactory;
+        public IAlunoRepository _repoAluno;
+        public ITurmaRepository _repoTurma;
         public IUnitOfWork _uow;
+        public IDatabaseFactory _factory;
 
         [TestInitialize]
         public void Initialize()
         {
             Database.SetInitializer(new BaseEFTest());
 
-            _uowFactory = new EntityFrameworkFactory();
+            _factory = new DatabaseFactory();
 
-           // _uowFactory.Create();
+            _uow = new EFUnitOfWork(_factory);
 
-            _uow = new EFUnitOfWork();
+            _repoTurma = new TurmaRepositoryEF(_factory);
 
-            _repoAluno = new AlunoRepositoryEF();
-            _repoTurma = new TurmaRepositoryEF();
+            _repoAluno = new AlunoRepositoryEF(_factory);
         }
 
         [TestMethod]

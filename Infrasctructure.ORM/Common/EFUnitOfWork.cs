@@ -1,5 +1,6 @@
 ﻿using Infrasctructure.DAO.ORM.Contexts;
 using Infrastructure.DAO.Common;
+using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
@@ -10,16 +11,26 @@ namespace Infrastructure.DAO.ORM.Common
 {
     public class EFUnitOfWork : IUnitOfWork
     {
-        private DiarioAcademiaContext _dbContext;
+        private DiarioAcademiaContext dbContext = null;
 
-        public EFUnitOfWork(DiarioAcademiaContext dbContext)
+        private readonly IDatabaseFactory dbFactory;
+
+        protected DiarioAcademiaContext DbContext
         {
-            _dbContext = dbContext;
+            get
+            {
+                return dbContext ?? dbFactory.Get();
+            }
+        }
+
+        public EFUnitOfWork(IDatabaseFactory dbFactory)
+        {
+            this.dbFactory = dbFactory;
         }
 
         public void Commit()
         {
-            _dbContext.SaveChanges();
+            DbContext.SaveChanges();
         }
 
         public void CommitAndRefreshChanges()
@@ -30,7 +41,7 @@ namespace Infrastructure.DAO.ORM.Common
             {
                 try
                 {
-                    _dbContext.SaveChanges();
+                    DbContext.SaveChanges();
 
                     saveFailed = false;
                 }
@@ -38,7 +49,7 @@ namespace Infrastructure.DAO.ORM.Common
                 {
                     saveFailed = true;
 
-                    var context = ((IObjectContextAdapter)_dbContext).ObjectContext;
+                    var context = ((IObjectContextAdapter)DbContext).ObjectContext;
 
                     var refreshableObjects = (from entry in context.ObjectStateManager.GetObjectStateEntries(
                                                                  EntityState.Added
@@ -57,9 +68,9 @@ namespace Infrastructure.DAO.ORM.Common
             } while (saveFailed);
         }
 
-        public void Dispose()
+        public void Rollback()
         {
-            _dbContext.Dispose();
+            DbContext.Dispose();
         }
     }
 }

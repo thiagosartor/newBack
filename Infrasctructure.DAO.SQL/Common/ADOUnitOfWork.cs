@@ -37,7 +37,7 @@ namespace Infrastructure.DAO.SQL.Common
             return command;
         }
 
-        public void Dispose()
+        public void Rollback()
         {
             if (_transaction != null)
             {

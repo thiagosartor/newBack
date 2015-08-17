@@ -1,8 +1,10 @@
-﻿using Domain.Entities;
+﻿using Domain.Contracts;
+using Domain.Entities;
 using Infrastructure.DAO.Common;
 using Infrastructure.DAO.ORM.Common;
 using Infrastructure.DAO.ORM.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
@@ -13,14 +15,21 @@ namespace Test
     [TestClass]
     public class TurmaEFTest
     {
-        public TurmaRepositoryEF _repo;
+        public ITurmaRepository _repo;
+        public IUnitOfWork _uow;
+        public IDatabaseFactory _factory;
+
 
         [TestInitialize]
         public void Initialize()
         {
             Database.SetInitializer(new BaseEFTest()); // Não está funcionando
 
-            _repo = new TurmaRepositoryEF();
+            _factory = new DatabaseFactory();
+
+            _uow = new EFUnitOfWork(_factory);
+
+            _repo = new TurmaRepositoryEF(_factory);
         }        
        
 
@@ -31,6 +40,8 @@ namespace Test
             var turma = ObjectMother.CreateTurma();
 
             _repo.Add(turma);
+
+            _uow.Commit();
 
             var qtdTurmas = _repo.GetAll().Count;
 

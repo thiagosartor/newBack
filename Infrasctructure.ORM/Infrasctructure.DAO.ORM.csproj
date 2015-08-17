@@ -53,8 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DatabaseFactory.cs" />
+    <Compile Include="Common\Disposable.cs" />
     <Compile Include="Common\EFUnitOfWork.cs" />
     <Compile Include="Common\EntityFrameworkFactory.cs" />
+    <Compile Include="Common\IDatabaseFactory.cs" />
     <Compile Include="Common\RepositoryBaseEF.cs" />
     <Compile Include="Configurations\AlunoConfiguration.cs" />
     <Compile Include="Configurations\AulaConfiguration.cs" />

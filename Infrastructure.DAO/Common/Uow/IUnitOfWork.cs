@@ -2,8 +2,10 @@
 
 namespace Infrastructure.DAO.Common
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         void Commit();
+
+        void Rollback();
     }
 }

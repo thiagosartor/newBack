@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Infrastructure.DAO.ORM;
+using Infrastructure.DAO.ORM.Common;
 using System.Data.Entity;
 
 namespace Infrasctructure.DAO.ORM.Contexts
