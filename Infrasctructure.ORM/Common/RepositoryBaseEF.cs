@@ -40,7 +40,7 @@ namespace Infrastructure.DAO.ORM.Common.Base
 
         public virtual void Update(T entity)
         {
-            DbEntityEntry dbEntityEntry = dataContext.Entry(entity);
+            DbEntityEntry dbEntityEntry = DataContext.Entry(entity);
 
             if (dbEntityEntry.State == EntityState.Detached)
             {
@@ -49,12 +49,12 @@ namespace Infrastructure.DAO.ORM.Common.Base
             dbEntityEntry.State = EntityState.Modified;
 
             dbset.Attach(entity);
-            dataContext.Entry(entity).State = EntityState.Modified;
+            DataContext.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual void Delete(T entity)
         {
-            DbEntityEntry dbEntityEntry = dataContext.Entry(entity);
+            DbEntityEntry dbEntityEntry = DataContext.Entry(entity);
 
             if (dbEntityEntry.State != EntityState.Deleted)
             {
@@ -67,7 +67,7 @@ namespace Infrastructure.DAO.ORM.Common.Base
             }
 
             dbset.Attach(entity);
-            dataContext.Entry(entity).State = EntityState.Deleted;
+            DataContext.Entry(entity).State = EntityState.Deleted;
 
             dbset.Remove(entity);
         }

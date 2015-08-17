@@ -14,12 +14,14 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-    public class BaseEFTest : DropCreateDatabaseAlways<DiarioAcademiaContext>
+    public class BaseEFTest : DropCreateDatabaseAlways<DiarioAcademiaContext> // Não está funcionando
     {
         public DiarioAcademiaContext _context;
         public IUnitOfWork _uow;
         public IDatabaseFactory _factory;
         public ITurmaRepository _turmaRepository;
+        public IAulaRepository _aulaRepository;
+        public IAlunoRepository _alunoRepository;
 
 
         public const string SqlCleanDB = @"DBCC CHECKIDENT ('[TBPresenca]', RESEED, 0)
@@ -41,6 +43,9 @@ namespace Test
             _uow = new EFUnitOfWork(_factory);
 
             _turmaRepository = new TurmaRepositoryEF(_factory);
+            _aulaRepository = new AulaRepositoryEF(_factory);
+            _alunoRepository = new AlunoRepositoryEF(_factory);
+
 
             Seed(_context);
         }
@@ -50,21 +55,16 @@ namespace Test
             context.Database.ExecuteSqlCommand(SqlCleanDB);
 
             //Adiciona uma turma
-            //context.Set<Turma>().Add(ObjectMother.CreateTurma());
-            _turmaRepository.Add(ObjectMother.CreateTurma());
-   
+            _turmaRepository.Add(ObjectMother.CreateTurma());   
 
             //Busca a turma do id = 1
-            //var turmEncontrada = context.Set<Turma>().Find(1);
+            var turmEncontrada = _turmaRepository.GetById(1);
 
             //Adiciona um aluno
-            //context.Set<Aluno>().Add(ObjectMother.CreateAluno(turmEncontrada));
-
-            //Busca aluno do id = 1
-            //var alunoEncontrado = context.Set<Aluno>().Find(1);
+            _alunoRepository.Add(ObjectMother.CreateAluno(turmEncontrada));
 
             //Adiciona uma aula
-            //context.Set<Aula>().Add(ObjectMother.CreateAula(turmEncontrada));
+            _aulaRepository.Add(ObjectMother.CreateAula(turmEncontrada));
 
             _uow.Commit();
         }

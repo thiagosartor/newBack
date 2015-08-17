@@ -23,7 +23,7 @@ namespace Test
         [TestInitialize]
         public void Initialize()
         {
-            Database.SetInitializer(new BaseEFTest()); // Não está funcionando
+            Database.SetInitializer(new BaseEFTest());
 
             _factory = new DatabaseFactory();
 
@@ -66,6 +66,7 @@ namespace Test
             turmaEncontrada.Ano = 2016;
 
             _repo.Update(turmaEncontrada);
+            _uow.Commit();
 
             var turmaEditada = _repo.GetById(1);
 
@@ -86,6 +87,7 @@ namespace Test
         public void Deveria_Remover_Turma_ORM_Test()
         {
             _repo.Add(new Turma());
+            _uow.Commit();
 
             var turmasEncontradas = _repo.GetAll();
 
@@ -93,9 +95,11 @@ namespace Test
 
             _repo.Delete(2);
 
+            _uow.Commit();
+
             turmasEncontradas = _repo.GetAll();
 
-            Assert.AreEqual(1,turmasEncontradas.Count);
+            Assert.AreEqual(1, turmasEncontradas.Count);
         }
     }
 }

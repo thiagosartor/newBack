@@ -7,6 +7,7 @@ using Domain.Contracts;
 using Infrastructure.DAO.Common;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using Infrastructure.DAO.ORM.Common;
+using Domain.Entities;
 
 namespace Test
 {
@@ -37,17 +38,17 @@ namespace Test
         [TestCategory("Teste de Integração Aula")]
         public void Deveria_Persistir_Aula_ORM_Test()
         {
-            _repoTurma.Add(ObjectMother.CreateTurma());
-
             var turmaEncontrada = _repoTurma.GetById(1);
 
             var aula = ObjectMother.CreateAula(turmaEncontrada);
 
-            aula.Turma = turmaEncontrada;
-            
             _repoAula.Add(aula);
 
-            Assert.IsNotNull(aula);
+            _uow.Commit();
+
+            var aulas = _repoAula.GetAll();                
+
+            Assert.AreEqual(2, aulas.Count);
         }
 
         [TestMethod]
@@ -69,10 +70,11 @@ namespace Test
 
             _repoAula.Update(aulaEncontrada);
 
+            _uow.Commit();
+
             var aulaEditada = _repoAula.GetById(1);
 
             Assert.AreEqual(2000, aulaEditada.Data.Year);
-
         }
 
         [TestMethod]
@@ -88,11 +90,21 @@ namespace Test
         [TestCategory("Teste de Integração Aula")]
         public void Deveria_Remover_Aula_ORM_Test()
         {
-            _repoAula.Delete(1);
+            _repoAula.Add(new Aula());
+
+            _uow.Commit();
 
             var aulasEncontradas = _repoAula.GetAll();
 
-            Assert.IsTrue(aulasEncontradas.Count == 0);
+            Assert.IsTrue(aulasEncontradas.Count == 2);
+
+            _repoAula.Delete(1);
+
+            _uow.Commit();
+
+            aulasEncontradas = _repoAula.GetAll();
+
+            Assert.IsTrue(aulasEncontradas.Count == 1);
         }
     }
 }
