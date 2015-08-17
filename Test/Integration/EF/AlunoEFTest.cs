@@ -1,4 +1,5 @@
 ﻿using Domain.Contracts;
+using Domain.Entities;
 using Infrastructure.DAO.Common;
 using Infrastructure.DAO.ORM.Common;
 using Infrastructure.DAO.ORM.Repositories;
@@ -90,22 +91,30 @@ namespace Test
         [TestCategory("Teste de Integração Aluno")]
         public void Deveria_Remover_Aluno_ORM_Test()
         {
-            _repoAluno.Delete(1);
+            _repoAluno.Add(new Aluno());
 
             _uow.Commit();
 
             var alunosEncontrados = _repoAluno.GetAll();
 
-            Assert.IsTrue(alunosEncontrados.Count == 0);
+            Assert.IsTrue(alunosEncontrados.Count == 2);
+
+            _repoAluno.Delete(1);
+
+            _uow.Commit();
+
+            alunosEncontrados = _repoAluno.GetAll();
+
+            Assert.IsTrue(alunosEncontrados.Count == 1);
         }
 
         [TestMethod]
         [TestCategory("Teste de Integração Aluno")]
         public void Deveria_Buscar_Alunos_Por_TurmaId_ORM_Test()
         {
-            var alunos = _repoAluno.GetAllByTurmaId(0);
+            var alunos = _repoAluno.GetAllByTurmaId(1);
 
-            Assert.IsTrue(alunos.Count > 0);
+            Assert.IsTrue(alunos.Count == 1);
         }
     }
 }

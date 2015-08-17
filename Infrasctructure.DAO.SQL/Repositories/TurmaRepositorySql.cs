@@ -37,7 +37,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                
+                RepositoryBaseADO.Insert(SqlInsert, Take(turma));
             }
             catch (Exception te)
             {
