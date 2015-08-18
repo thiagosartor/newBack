@@ -1,5 +1,6 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
+using Infrasctructure.DAO.SQL.Common;
 using Infrastructure.DAO.Common;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                RepositoryBaseADO.Insert(SqlInsert, Take(turma));
+                Db.Insert(SqlInsert, Take(turma));
             }
             catch (Exception te)
             {
@@ -52,7 +53,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var turmaRemovida = GetById(id);
-                RepositoryBaseADO.Delete(SqlDelete, Take(turmaRemovida));
+                Db.Delete(SqlDelete, Take(turmaRemovida));
             }
             catch (Exception te)
             {
@@ -65,7 +66,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var turmaRemovida = GetById(entity.Id);
-                RepositoryBaseADO.Delete(SqlDelete, Take(turmaRemovida));
+                Db.Delete(SqlDelete, Take(turmaRemovida));
             }
             catch (Exception te)
             {
@@ -77,7 +78,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                return RepositoryBaseADO.GetAll<Turma>(SqlSelect, Make);
+                return Db.GetAll<Turma>(SqlSelect, Make);
             }
             catch (Exception te)
             {
@@ -91,7 +92,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             {
                 var parms = new object[] { "Id", id };
 
-                return RepositoryBaseADO.Get(SqlSelectbId, Make, parms);
+                return Db.Get(SqlSelectbId, Make, parms);
             }
             catch (Exception te)
             {
@@ -104,7 +105,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                RepositoryBaseADO.Update(SqlUpdate, Take(entity));
+                Db.Update(SqlUpdate, Take(entity));
             }
             catch (Exception te)
             {

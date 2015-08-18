@@ -1,5 +1,6 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
+using Infrasctructure.DAO.SQL.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -38,7 +39,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                RepositoryBaseADO.Insert(SqlInsert, Take(entity));
+                Db.Insert(SqlInsert, Take(entity));
             }
             catch (Exception te)
             {
@@ -52,7 +53,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var aulaRemovida = GetById(id);
-                RepositoryBaseADO.Delete(SqlDelete, Take(aulaRemovida));
+                Db.Delete(SqlDelete, Take(aulaRemovida));
             }
             catch (Exception te)
             {
@@ -65,7 +66,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var aulaRemovida = GetById(entity.Id);
-                RepositoryBaseADO.Delete(SqlDelete, Take(aulaRemovida));
+                Db.Delete(SqlDelete, Take(aulaRemovida));
             }
             catch (Exception te)
             {
@@ -77,7 +78,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                return RepositoryBaseADO.GetAll<Aula>(SqlSelect, Make);
+                return Db.GetAll<Aula>(SqlSelect, Make);
             }
             catch (Exception te)
             {
@@ -106,7 +107,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             {
                 var parms = new object[] { "Id", id };
 
-                return RepositoryBaseADO.Get(SqlSelectbId, Make, parms);
+                return Db.Get(SqlSelectbId, Make, parms);
             }
             catch (Exception)
             {
@@ -129,7 +130,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var aulaEditada = GetById(entity.Id);
-                RepositoryBaseADO.Update(SqlUpdate, Take(aulaEditada));
+                Db.Update(SqlUpdate, Take(aulaEditada));
             }
             catch (Exception te)
             {

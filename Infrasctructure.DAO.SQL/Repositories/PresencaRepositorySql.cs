@@ -1,5 +1,6 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
+using Infrasctructure.DAO.SQL.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -26,7 +27,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var presencaRemovida = GetById(id);
-                RepositoryBaseADO.Delete(SqlDelete, Take(presencaRemovida));
+                Db.Delete(SqlDelete, Take(presencaRemovida));
             }
             catch (Exception te)
             {

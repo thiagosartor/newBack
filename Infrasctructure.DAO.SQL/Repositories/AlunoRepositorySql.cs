@@ -1,5 +1,6 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
+using Infrasctructure.DAO.SQL.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -53,7 +54,7 @@ namespace Infrastructure.DAO.SQL.Repositories
 
         public Aluno Add(Aluno entity)
         {
-            RepositoryBaseADO.Insert(SqlInsert, Take(entity));
+            Db.Insert(SqlInsert, Take(entity));
 
             return entity;
         }
@@ -61,43 +62,43 @@ namespace Infrastructure.DAO.SQL.Repositories
         public void Delete(int id)
         {
             var alunoRemovido = GetById(id);
-            RepositoryBaseADO.Delete(SqlDelete, Take(alunoRemovido));
+            Db.Delete(SqlDelete, Take(alunoRemovido));
         }
 
         public void Delete(Aluno entity)
         {
-            RepositoryBaseADO.Delete(SqlDelete, Take(entity));
+            Db.Delete(SqlDelete, Take(entity));
         }
 
         public IList<Aluno> GetAll()
         {
-            return RepositoryBaseADO.GetAll(SqlSelect, Make);
+            return Db.GetAll(SqlSelect, Make);
         }
 
         public IList<Aluno> GetAllByTurma(int ano)
         {
             var parms = new object[] { "ano", ano };
 
-            return RepositoryBaseADO.GetAll(SqlSelectAllByTurma, Make, parms);
+            return Db.GetAll(SqlSelectAllByTurma, Make, parms);
         }
 
         public IList<Aluno> GetAllByTurmaId(int turmaId)
         {
             var parms = new object[] { "Turma_Id", turmaId };
 
-            return RepositoryBaseADO.GetAll(SqlSelectAllByTurma, Make, parms);
+            return Db.GetAll(SqlSelectAllByTurma, Make, parms);
         }
 
         public Aluno GetById(int id)
         {
             var parms = new object[] { "Id", id };
 
-            return RepositoryBaseADO.Get(SqlSelectbId, Make, parms);
+            return Db.Get(SqlSelectbId, Make, parms);
         }
 
         public void Update(Aluno entity)
         {
-            RepositoryBaseADO.Update(SqlUpdate, Take(entity));
+            Db.Update(SqlUpdate, Take(entity));
         }
 
         private static Aluno Make(IDataReader reader)
