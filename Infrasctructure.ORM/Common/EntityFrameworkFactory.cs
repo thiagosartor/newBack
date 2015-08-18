@@ -1,5 +1,5 @@
 ﻿using Infrasctructure.DAO.ORM.Contexts;
-using Infrastructure.DAO.Common.Context;
+using Infrastructure.DAO.Common.Factorys;
 
 namespace NDDigital.DiarioAcademia.Infraestrutura.Orm.Common
 {

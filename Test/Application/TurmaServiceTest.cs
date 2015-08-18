@@ -1,16 +1,11 @@
 ﻿using Domain.Contracts;
 using Infrasctructure.DAO.ORM.Contexts;
 using Infrastructure.DAO.Common;
-using Infrastructure.DAO.Common.Context;
+using Infrastructure.DAO.Common.Factorys;
 using Infrastructure.DAO.IoC;
 using Infrastructure.DAO.ORM.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Test.Application
 {
@@ -30,7 +25,7 @@ namespace Test.Application
 
             _uow = new EntityFrameworkUnitOfWork(_factory);
 
-           //_uow = new AdoNetUnitOfWork(_factory);
+            //_uow = new AdoNetUnitOfWork(_factory);
         }
 
         [TestMethod]

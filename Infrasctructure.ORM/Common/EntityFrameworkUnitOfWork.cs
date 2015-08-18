@@ -1,6 +1,6 @@
 ﻿using Infrasctructure.DAO.ORM.Contexts;
 using Infrastructure.DAO.Common;
-using Infrastructure.DAO.Common.Context;
+using Infrastructure.DAO.Common.Factorys;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using System;
 using System.Data.Entity;

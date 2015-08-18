@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Context\IDatabaseFactory.cs" />
+    <Compile Include="Common\Factorys\IDatabaseFactory.cs" />
     <Compile Include="IoC\Container.cs" />
     <Compile Include="Common\Uow\ADOUnitOfWork.cs" />
     <Compile Include="Common\Uow\IUnitOfWork.cs" />

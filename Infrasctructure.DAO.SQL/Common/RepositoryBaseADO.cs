@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 
 namespace Infrastructure.DAO.SQL
 {
     public delegate T ConverterDelegate<T>(IDataReader reader);
 
-    public static class RepositoryBaseADO
+    public class RepositoryBaseADO
     {
         #region Attributos
 
@@ -26,6 +27,13 @@ namespace Infrastructure.DAO.SQL
 
         #endregion Attributos
 
+        private IDbConnection _connection;
+
+        public RepositoryBaseADO(IDbConnection connection)
+        {
+            _connection = connection;
+        }
+
         public static int Insert(string sql, object[] parms = null)
         {
             sql = string.Format(sql, GetParameterPrefix());
@@ -37,8 +45,8 @@ namespace Infrastructure.DAO.SQL
                 using (DbCommand command = factory.CreateCommand())
                 {
                     command.Connection = connection;
-                    command.SetParameters(parms);                     // Extension method
-                    command.CommandText = sql.AppendIdentitySelect(); // Extension method
+                    SetParameters(command, parms);                   // Extension method
+                    command.CommandText = AppendIdentitySelect(sql); // Extension method
 
                     connection.Open();
 
@@ -61,7 +69,7 @@ namespace Infrastructure.DAO.SQL
                 {
                     command.Connection = connection;
                     command.CommandText = sql;
-                    command.SetParameters(parms);
+                    SetParameters(command, parms);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -86,7 +94,7 @@ namespace Infrastructure.DAO.SQL
                 {
                     command.Connection = connection;
                     command.CommandText = sql;
-                    command.SetParameters(parms);
+                    SetParameters(command, parms);
 
                     connection.Open();
 
@@ -116,7 +124,7 @@ namespace Infrastructure.DAO.SQL
                 {
                     command.Connection = connection;
                     command.CommandText = sql;
-                    command.SetParameters(parms);  // Extension method
+                    SetParameters(command, parms);  // Extension method
 
                     connection.Open();
 
@@ -134,7 +142,7 @@ namespace Infrastructure.DAO.SQL
 
         #region Private methods
 
-        private static void SetParameters(this DbCommand command, object[] parms)
+        private static void SetParameters(DbCommand command, object[] parms)
         {
             if (parms != null && parms.Length > 0)
             {
@@ -156,7 +164,7 @@ namespace Infrastructure.DAO.SQL
             }
         }
 
-        private static string AppendIdentitySelect(this string sql)
+        private static string AppendIdentitySelect(string sql)
         {
             switch (providerName)
             {

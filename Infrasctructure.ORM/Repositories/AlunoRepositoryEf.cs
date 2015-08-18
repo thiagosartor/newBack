@@ -1,7 +1,7 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
 using Infrasctructure.DAO.ORM.Contexts;
-using Infrastructure.DAO.Common.Context;
+using Infrastructure.DAO.Common.Factorys;
 using Infrastructure.DAO.ORM.Common.Base;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using System.Collections.Generic;

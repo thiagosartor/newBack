@@ -8,7 +8,7 @@ using Infrastructure.DAO.Common;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using Infrastructure.DAO.ORM.Common;
 using Domain.Entities;
-using Infrastructure.DAO.Common.Context;
+using Infrastructure.DAO.Common.Factorys;
 
 namespace Test
 {

@@ -2,7 +2,7 @@
 using Domain.Entities;
 using Infrasctructure.DAO.ORM.Contexts;
 using Infrastructure.DAO.Common;
-using Infrastructure.DAO.Common.Context;
+using Infrastructure.DAO.Common.Factorys;
 using Infrastructure.DAO.ORM.Common;
 using Infrastructure.DAO.ORM.Repositories;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;

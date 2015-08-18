@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.DAO.Common.Context
+namespace Infrastructure.DAO.Common.Factorys
 {
     public interface IDatabaseFactory<T> : IDisposable
     {
