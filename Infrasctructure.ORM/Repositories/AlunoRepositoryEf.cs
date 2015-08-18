@@ -1,5 +1,7 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
+using Infrasctructure.DAO.ORM.Contexts;
+using Infrastructure.DAO.Common.Context;
 using Infrastructure.DAO.ORM.Common.Base;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ namespace Infrastructure.DAO.ORM.Repositories
 {
     public class AlunoRepositoryEF : RepositoryBaseEF<Aluno>, IAlunoRepository
     {
-        public AlunoRepositoryEF(IDatabaseFactory dbFactory) : base(dbFactory)
+        public AlunoRepositoryEF(IDatabaseFactory<EntityFrameworkContext> dbFactory) : base(dbFactory)
         {
         }
 

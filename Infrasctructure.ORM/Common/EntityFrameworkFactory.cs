@@ -1,15 +1,21 @@
-﻿using Infrastructure.DAO.Common;
-using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
+﻿using Infrasctructure.DAO.ORM.Contexts;
+using Infrastructure.DAO.Common.Context;
 
-namespace Infrastructure.DAO.ORM.Common
+namespace NDDigital.DiarioAcademia.Infraestrutura.Orm.Common
 {
-    public class EntityFrameworkFactory : UnitOfWorkFactory
+    public class EntityFrameworkFactory : Disposable, IDatabaseFactory<EntityFrameworkContext>
     {
-        public IDatabaseFactory _factory;
+        private EntityFrameworkContext dataContext;
 
-        public override IUnitOfWork Create()
+        public EntityFrameworkContext Get()
         {
-            return new EFUnitOfWork(_factory);
+            return dataContext ?? (dataContext = new EntityFrameworkContext());
+        }
+
+        protected override void DisposeCore()
+        {
+            if (dataContext != null)
+                dataContext.Dispose();
         }
     }
 }

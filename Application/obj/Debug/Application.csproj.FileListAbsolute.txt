@@ -24,3 +24,9 @@ C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Infrastruc
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Ninject.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Infrastructure.DAO.pdb
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Ninject.xml
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Infrasctructure.DAO.ORM.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Infrasctructure.DAO.SQL.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\EntityFramework.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Infrasctructure.DAO.SQL.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\Infrasctructure.DAO.ORM.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Application\bin\Debug\EntityFramework.xml

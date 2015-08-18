@@ -8,6 +8,7 @@ using Infrastructure.DAO.Common;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using Infrastructure.DAO.ORM.Common;
 using Domain.Entities;
+using Infrastructure.DAO.Common.Context;
 
 namespace Test
 {
@@ -17,16 +18,16 @@ namespace Test
         public IAulaRepository _repoAula;
         public ITurmaRepository _repoTurma;
         public IUnitOfWork _uow;
-        public IDatabaseFactory _factory;
+        public IDatabaseFactory<EntityFrameworkContext> _factory;
 
         [TestInitialize]
         public void Initialize()
         {
             Database.SetInitializer(new BaseEFTest());
 
-            _factory = new DatabaseFactory();
+            _factory = new EntityFrameworkFactory();
 
-            _uow = new EFUnitOfWork(_factory);
+            _uow = new EntityFrameworkUnitOfWork(_factory);
 
             _repoTurma = new TurmaRepositoryEF(_factory);
 

@@ -53,18 +53,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\DatabaseFactory.cs" />
-    <Compile Include="Common\Disposable.cs" />
-    <Compile Include="Common\EFUnitOfWork.cs" />
     <Compile Include="Common\EntityFrameworkFactory.cs" />
-    <Compile Include="Common\IDatabaseFactory.cs" />
+    <Compile Include="Common\Disposable.cs" />
+    <Compile Include="Common\EntityFrameworkUnitOfWork.cs" />
     <Compile Include="Common\RepositoryBaseEF.cs" />
     <Compile Include="Configurations\AlunoConfiguration.cs" />
     <Compile Include="Configurations\AulaConfiguration.cs" />
     <Compile Include="Configurations\EnderecoConfiguration.cs" />
     <Compile Include="Configurations\PresencaConfiguration.cs" />
     <Compile Include="Configurations\TurmaConfiguration.cs" />
-    <Compile Include="Contexts\DiarioAcademiaContext.cs" />
+    <Compile Include="Contexts\EntityFrameworkContext.cs" />
     <Compile Include="Modules\EntityFrameworkNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlunoRepositoryEf.cs" />

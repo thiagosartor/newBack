@@ -24,6 +24,7 @@ namespace Application.Services
     {
         private ITurmaRepository _turmaRepository;
         private IUnitOfWork _unitOfWork;
+
         public TurmaService(ITurmaRepository repoTurma, IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -35,6 +36,8 @@ namespace Application.Services
             Turma turma = new Turma(turmaDto.Ano);
 
             _turmaRepository.Add(turma);
+
+            _unitOfWork.Commit();
         }
 
         public void Update(TurmaDTO turmaDto)
@@ -44,11 +47,15 @@ namespace Application.Services
             turma.Ano = turmaDto.Ano;
 
             _turmaRepository.Update(turma);
+
+            _unitOfWork.Commit();
         }
 
         public void Delete(int id)
         {
             _turmaRepository.Delete(id);
+
+            _unitOfWork.Commit();
         }
 
         public TurmaDTO GetById(int id)

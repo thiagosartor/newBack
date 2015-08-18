@@ -58,6 +58,14 @@
       <Project>{c35cde6f-aebb-46c5-93e5-c061c08bc2ec}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrasctructure.DAO.SQL\Infrasctructure.DAO.SQL.csproj">
+      <Project>{91552445-1896-48cc-a223-654b4ab61851}</Project>
+      <Name>Infrasctructure.DAO.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrasctructure.ORM\Infrasctructure.DAO.ORM.csproj">
+      <Project>{3341d748-4058-4a42-b9a0-6249e2577a3a}</Project>
+      <Name>Infrasctructure.DAO.ORM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.DAO\Infrastructure.DAO.csproj">
       <Project>{ba41785c-9f98-4aff-84e4-01735be2f4cb}</Project>
       <Name>Infrastructure.DAO</Name>

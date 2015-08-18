@@ -5,14 +5,14 @@ using System.Data.Entity;
 
 namespace Infrasctructure.DAO.ORM.Contexts
 {
-    public class DiarioAcademiaContext : DbContext
+    public class EntityFrameworkContext : DbContext
     {
-        public DiarioAcademiaContext()
+        public EntityFrameworkContext()
             : base("DiarioContext")
         {
             this.Configuration.LazyLoadingEnabled = true;
             this.Configuration.ProxyCreationEnabled = true;
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DiarioAcademiaContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EntityFrameworkContext>());
         }
 
         public DbSet<Aluno> Alunos { get; set; }

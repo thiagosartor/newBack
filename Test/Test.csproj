@@ -72,6 +72,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Application\PresencaServiceTests.cs" />
+    <Compile Include="Application\TurmaServiceTest.cs" />
     <Compile Include="BaseEFTest.cs" />
     <Compile Include="BaseSQLTest.cs" />
     <Compile Include="Integration\ADO\AlunoADOTest.cs" />

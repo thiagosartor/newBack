@@ -9,16 +9,16 @@ namespace Infrastructure.DAO.SQL.Common
     {
         #region Attributos
 
-        private static readonly string connectionStringName =
+        public static readonly string connectionStringName =
             ConfigurationManager.AppSettings.Get("connectionDB");
 
-        private static readonly string providerName =
+        public static readonly string providerName =
             ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName;
 
-        private static readonly string connectionString =
+        public static readonly string connectionString =
             ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
 
-        private static readonly DbProviderFactory factory =
+        public static readonly DbProviderFactory factory =
             DbProviderFactories.GetFactory(providerName);
 
         #endregion Attributos

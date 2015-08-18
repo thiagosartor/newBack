@@ -1,6 +1,8 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
+using Infrasctructure.DAO.ORM.Contexts;
 using Infrastructure.DAO.Common;
+using Infrastructure.DAO.Common.Context;
 using Infrastructure.DAO.ORM.Common;
 using Infrastructure.DAO.ORM.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -15,16 +17,16 @@ namespace Test
         public IAlunoRepository _repoAluno;
         public ITurmaRepository _repoTurma;
         public IUnitOfWork _uow;
-        public IDatabaseFactory _factory;
+        public IDatabaseFactory<EntityFrameworkContext> _factory;
 
         [TestInitialize]
         public void Initialize()
         {
             Database.SetInitializer(new BaseEFTest());
 
-            _factory = new DatabaseFactory();
+            _factory = new EntityFrameworkFactory();
 
-            _uow = new EFUnitOfWork(_factory);
+            _uow = new EntityFrameworkUnitOfWork(_factory);
 
             _repoTurma = new TurmaRepositoryEF(_factory);
 

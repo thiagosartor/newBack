@@ -1,5 +1,6 @@
 ﻿using Infrasctructure.DAO.ORM.Contexts;
 using Infrastructure.DAO.Common;
+using Infrastructure.DAO.Common.Context;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using System;
 using System.Data.Entity;
@@ -9,13 +10,13 @@ using System.Linq;
 
 namespace Infrastructure.DAO.ORM.Common
 {
-    public class EFUnitOfWork : IUnitOfWork
+    public class EntityFrameworkUnitOfWork : IUnitOfWork
     {
-        private DiarioAcademiaContext dbContext = null;
+        private EntityFrameworkContext dbContext = null;
 
-        private readonly IDatabaseFactory dbFactory;
+        private readonly IDatabaseFactory<EntityFrameworkContext> dbFactory;
 
-        protected DiarioAcademiaContext DbContext
+        protected EntityFrameworkContext DbContext
         {
             get
             {
@@ -23,7 +24,7 @@ namespace Infrastructure.DAO.ORM.Common
             }
         }
 
-        public EFUnitOfWork(IDatabaseFactory dbFactory)
+        public EntityFrameworkUnitOfWork(IDatabaseFactory<EntityFrameworkContext> dbFactory)
         {
             this.dbFactory = dbFactory;
         }

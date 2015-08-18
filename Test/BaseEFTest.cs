@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Infrasctructure.DAO.ORM.Contexts;
 using Infrastructure.DAO.Common;
+using Infrastructure.DAO.Common.Context;
 using Infrastructure.DAO.ORM.Common;
 using Infrastructure.DAO.ORM.Repositories;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
@@ -14,11 +15,11 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-    public class BaseEFTest : DropCreateDatabaseAlways<DiarioAcademiaContext> // Não está funcionando
+    public class BaseEFTest : DropCreateDatabaseAlways<EntityFrameworkContext> // Não está funcionando
     {
-        public DiarioAcademiaContext _context;
+        public EntityFrameworkContext _context;
         public IUnitOfWork _uow;
-        public IDatabaseFactory _factory;
+        public IDatabaseFactory<EntityFrameworkContext> _factory;
         public ITurmaRepository _turmaRepository;
         public IAulaRepository _aulaRepository;
         public IAlunoRepository _alunoRepository;
@@ -36,11 +37,11 @@ namespace Test
 
         public BaseEFTest()
         {
-            _context = new DiarioAcademiaContext();
+            _context = new EntityFrameworkContext();
 
-            _factory = new DatabaseFactory();
+            _factory = new EntityFrameworkFactory();
 
-            _uow = new EFUnitOfWork(_factory);
+            _uow = new EntityFrameworkUnitOfWork(_factory);
 
             _turmaRepository = new TurmaRepositoryEF(_factory);
             _aulaRepository = new AulaRepositoryEF(_factory);
@@ -50,7 +51,7 @@ namespace Test
             Seed(_context);
         }
 
-        protected override void Seed(DiarioAcademiaContext context)
+        protected override void Seed(EntityFrameworkContext context)
         {
             context.Database.ExecuteSqlCommand(SqlCleanDB);
 
