@@ -41,7 +41,9 @@ namespace Test
 
             var alunos = _repoAluno.GetAll();
 
-            Assert.IsTrue(alunos.Count > 0);
+            _uow.Commit();
+
+            Assert.AreEqual(2, alunos.Count);
         }
 
         [TestMethod]
@@ -65,6 +67,8 @@ namespace Test
 
             var alunoEditado = _repoAluno.GetById(1);
 
+            _uow.Commit();
+
             Assert.AreEqual("Alexandre Regis", alunoEditado.Nome);
         }
 
@@ -84,6 +88,8 @@ namespace Test
             _repoAluno.Delete(1);
 
             var alunosEncontrados = _repoAluno.GetAll();
+
+            _uow.Commit();
 
             Assert.IsTrue(alunosEncontrados.Count == 0);
         }

@@ -31,9 +31,9 @@ namespace Test
 
             _repo.Add(turma);
 
-            _uow.Commit();
-
             var qtdTurmas = _repo.GetAll().Count;
+
+            _uow.Commit();
 
             Assert.AreEqual(2, qtdTurmas);
         }
