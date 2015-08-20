@@ -15,4 +15,3 @@ C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Ent
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\EntityFramework.xml
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\obj\Debug\Infrastructure.DAO.csprojResolveAssemblyReference.cache

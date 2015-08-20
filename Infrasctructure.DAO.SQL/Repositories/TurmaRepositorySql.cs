@@ -21,17 +21,17 @@ namespace Infrastructure.DAO.SQL.Repositories
 
         public const string SqlUpdate =
          "UPDATE TBTurma SET Ano = {0}Ano " +
-                      "WHERE Id = {0}Id";
+                      "WHERE Id = {0}Id_Turma";
 
         public const string SqlDelete =
          "DELETE FROM TBTurma " +
-                       "WHERE Id = {0}Id";
+                       "WHERE Id = {0}Id_Turma";
 
         public const string SqlSelect =
          "SELECT * FROM TBTurma";
 
         public const string SqlSelectbId =
-        "SELECT * FROM TBTurma WHERE Id = {0}Id";
+        "SELECT * FROM TBTurma WHERE Id = {0}Id_Turma";
 
         #endregion Querys
 
@@ -96,7 +96,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                var parms = new object[] { "Id", id };
+                var parms = new object[] { "Id_Turma", id };
 
                 return Get(SqlSelectbId, Make, parms);
             }

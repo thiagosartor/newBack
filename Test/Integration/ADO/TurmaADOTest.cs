@@ -9,17 +9,18 @@ namespace Test
     {
         private TurmaRepositorySql _repo;
         private ADOUnitOfWork _uow;
+        private AdoNetFactory _factory;
 
         [TestInitialize]
         public void Initialize()
         {
             new BaseSQLTest();
 
-            var factory = new AdoNetFactory();
+            _factory = new AdoNetFactory();
 
-            _uow = new ADOUnitOfWork(factory);
+            _uow = new ADOUnitOfWork(_factory);
 
-            _repo = new TurmaRepositorySql(factory);
+            _repo = new TurmaRepositorySql(_factory);
         }
 
         [TestMethod]
@@ -30,7 +31,7 @@ namespace Test
 
             _repo.Add(turma);
 
-          _uow.Commit();
+            _uow.Commit();
 
             var qtdTurmas = _repo.GetAll().Count;
 
@@ -58,6 +59,8 @@ namespace Test
 
             var turmaEditada = _repo.GetById(1);
 
+            _uow.Commit();
+
             Assert.AreEqual(2016, turmaEditada.Ano);
         }
 
@@ -81,6 +84,14 @@ namespace Test
             var qtdTurmas = _repo.GetAll().Count;
 
             Assert.AreEqual(2, qtdTurmas);
+
+            _repo.Delete(2);
+
+            qtdTurmas = _repo.GetAll().Count;
+
+            _uow.Commit();
+
+            Assert.AreEqual(1, qtdTurmas);
         }
     }
 }

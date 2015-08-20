@@ -1,8 +1,6 @@
 ﻿using Infrastructure.DAO.Common;
-using System;
 using System.Configuration;
 using System.Data.Common;
-using System.Data.SqlClient;
 
 namespace Infrastructure.DAO.SQL.Common
 {

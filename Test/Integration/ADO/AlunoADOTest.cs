@@ -1,10 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Infrastructure.DAO.ORM.Repositories;
-using System.Data.Entity;
-using Infrasctructure.DAO.ORM.Contexts;
+﻿using Infrastructure.DAO.SQL.Common;
 using Infrastructure.DAO.SQL.Repositories;
-using Infrastructure.DAO.SQL.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test
 {
@@ -52,7 +48,7 @@ namespace Test
         [TestCategory("Teste de Integração Aluno")]
         public void Deveria_Buscar_Aluno_SQL_Test()
         {
-            var alunoEncontrado =  _repoAluno.GetById(1);
+            var alunoEncontrado = _repoAluno.GetById(1);
 
             Assert.IsNotNull(alunoEncontrado);
             Assert.AreEqual(1, alunoEncontrado.Id);
@@ -70,7 +66,6 @@ namespace Test
             var alunoEditado = _repoAluno.GetById(1);
 
             Assert.AreEqual("Alexandre Regis", alunoEditado.Nome);
-
         }
 
         [TestMethod]

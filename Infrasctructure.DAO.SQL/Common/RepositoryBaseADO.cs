@@ -37,7 +37,6 @@ namespace Infrasctructure.DAO.SQL.Common
 
             _factory.Command.CommandText = sql;
             _factory.Command.SetParameters(parms);
-
             _factory.Command.ExecuteNonQuery();
         }
 
@@ -61,6 +60,7 @@ namespace Infrasctructure.DAO.SQL.Common
                 var obj = convert(reader);
                 list.Add(obj);
             }
+            reader.Close();
 
             return list;
         }
@@ -78,6 +78,8 @@ namespace Infrasctructure.DAO.SQL.Common
 
             if (reader.Read())
                 t = convert(reader);
+
+            reader.Close();
 
             return t;
         }
@@ -102,7 +104,8 @@ namespace Infrasctructure.DAO.SQL.Common
                     dbParameter.ParameterName = name;
                     dbParameter.Value = value;
 
-                    command.Parameters.Add(dbParameter);
+                    if (!command.Parameters.Contains(name))
+                        command.Parameters.Add(dbParameter);
                 }
             }
         }
