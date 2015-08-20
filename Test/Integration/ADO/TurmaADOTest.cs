@@ -1,5 +1,4 @@
-﻿using Infrastructure.DAO.Common;
-using Infrastructure.DAO.ORM.Repositories;
+﻿using Infrastructure.DAO.SQL.Common;
 using Infrastructure.DAO.SQL.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,17 +7,19 @@ namespace Test
     [TestClass]
     public class TurmaADOTest
     {
-        public TurmaRepositorySql _repo;
-        public IUnitOfWork _uow;
+        private TurmaRepositorySql _repo;
+        private ADOUnitOfWork _uow;
 
         [TestInitialize]
         public void Initialize()
         {
             new BaseSQLTest();
 
-            _repo = new TurmaRepositorySql();
+            var factory = new AdoNetFactory();
 
-           // _uow = new ADOUnitOfWork(,);
+            _uow = new ADOUnitOfWork(factory);
+
+            _repo = new TurmaRepositorySql(factory);
         }
 
         [TestMethod]
@@ -29,7 +30,7 @@ namespace Test
 
             _repo.Add(turma);
 
-          //_uow.Commit();
+          _uow.Commit();
 
             var qtdTurmas = _repo.GetAll().Count;
 

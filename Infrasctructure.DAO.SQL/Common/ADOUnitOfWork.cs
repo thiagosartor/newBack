@@ -7,48 +7,35 @@ namespace Infrastructure.DAO.SQL.Common
 {
     public class ADOUnitOfWork : IUnitOfWork
     {
-        private IDbConnection _connection;
-        private IDbTransaction _transaction;
-
-        public ADOUnitOfWork(IDbConnection connection)
+        private AdoNetFactory _factory;
+        public ADOUnitOfWork(AdoNetFactory factory)
         {
-            _connection = connection;
-
-            _connection.Open();
-
-            _transaction = connection.BeginTransaction();
+            _factory = factory;
         }
 
         public void Commit()
         {
-            if (_transaction == null)
+            if (_factory.Command.Transaction == null)
             {
                 throw new InvalidOperationException("Erro na transação!");
             }
 
-            _transaction.Commit();
-            _transaction = null;
-        }
-
-        public IDbCommand CreateCommand()
-        {
-            var command = _connection.CreateCommand();
-            command.Transaction = _transaction;
-            return command;
+            _factory.Command.Transaction.Commit();
+            _factory.Command.Transaction = null;
         }
 
         public void Rollback()
         {
-            if (_transaction != null)
+            if (_factory.Command.Transaction != null)
             {
-                _transaction.Rollback();
-                _transaction = null;
+                _factory.Command.Transaction.Rollback();
+                _factory.Command.Transaction = null;
             }
 
-            if (_connection != null)
+            if (_factory.Connection != null)
             {
-                _connection.Close();
-                _connection = null;
+                _factory.Connection.Close();
+                _factory.Connection = null;
             }
         }
     }

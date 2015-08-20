@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Infrasctructure.DAO.SQL.Common;
 using Infrastructure.DAO.Common;
+using Infrastructure.DAO.SQL.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +10,7 @@ using System.Linq.Expressions;
 
 namespace Infrastructure.DAO.SQL.Repositories
 {
-    public class TurmaRepositorySql : ITurmaRepository
+    public class TurmaRepositorySql : RepositoryBaseADO, ITurmaRepository
     {
 
         #region Querys
@@ -34,11 +35,16 @@ namespace Infrastructure.DAO.SQL.Repositories
 
         #endregion Querys
 
+        public TurmaRepositorySql(AdoNetFactory factory) : base(factory)
+        {
+
+        }
+
         public Turma Add(Turma turma)
         {
             try
             {
-                Db.Insert(SqlInsert, Take(turma));
+                Insert(SqlInsert, Take(turma));
             }
             catch (Exception te)
             {
@@ -53,7 +59,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var turmaRemovida = GetById(id);
-                Db.Delete(SqlDelete, Take(turmaRemovida));
+                Delete(SqlDelete, Take(turmaRemovida));
             }
             catch (Exception te)
             {
@@ -66,7 +72,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var turmaRemovida = GetById(entity.Id);
-                Db.Delete(SqlDelete, Take(turmaRemovida));
+                Delete(SqlDelete, Take(turmaRemovida));
             }
             catch (Exception te)
             {
@@ -78,7 +84,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                return Db.GetAll<Turma>(SqlSelect, Make);
+                return GetAll<Turma>(SqlSelect, Make);
             }
             catch (Exception te)
             {
@@ -92,7 +98,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             {
                 var parms = new object[] { "Id", id };
 
-                return Db.Get(SqlSelectbId, Make, parms);
+                return Get(SqlSelectbId, Make, parms);
             }
             catch (Exception te)
             {
@@ -105,7 +111,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                Db.Update(SqlUpdate, Take(entity));
+                Update(SqlUpdate, Take(entity));
             }
             catch (Exception te)
             {

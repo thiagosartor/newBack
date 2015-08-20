@@ -4,22 +4,29 @@ using Infrastructure.DAO.ORM.Repositories;
 using System.Data.Entity;
 using Infrasctructure.DAO.ORM.Contexts;
 using Infrastructure.DAO.SQL.Repositories;
+using Infrastructure.DAO.SQL.Common;
 
 namespace Test
 {
     [TestClass]
     public class AlunoADOTest
     {
-        public AlunoRepositorySql _repoAluno;
-        public TurmaRepositorySql _repoTurma;
+        private AlunoRepositorySql _repoAluno;
+        private TurmaRepositorySql _repoTurma;
+        private ADOUnitOfWork _uow;
 
         [TestInitialize]
         public void Initialize()
         {
             new BaseSQLTest();
 
-            _repoAluno = new AlunoRepositorySql();
-            _repoTurma = new TurmaRepositorySql();
+            var factory = new AdoNetFactory();
+
+            _uow = new ADOUnitOfWork(factory);
+
+            _repoAluno = new AlunoRepositorySql(factory);
+
+            _repoTurma = new TurmaRepositorySql(factory);
         }
 
         [TestMethod]

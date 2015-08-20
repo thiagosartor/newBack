@@ -10,25 +10,63 @@ namespace Infrastructure.DAO.SQL.Common
     {
         #region Attributos
 
-        public static readonly string connectionStringName =
+        private static readonly string connectionStringName =
             ConfigurationManager.AppSettings.Get("connectionDB");
 
-        public static readonly string providerName =
+        private static readonly string providerName =
             ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName;
 
-        public static readonly string connectionString =
+        private static readonly string connectionString =
             ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
 
-        public static readonly DbProviderFactory factory =
+        private static readonly DbProviderFactory factory =
             DbProviderFactories.GetFactory(providerName);
+
+        private DbConnection _connection;
+        private DbTransaction _transaction;
+        private DbCommand _command;
 
         #endregion Attributos
 
+        public AdoNetFactory()
+        {
+            Connection = factory.CreateConnection();
+
+            Connection.ConnectionString = connectionString;
+
+            Command = factory.CreateCommand();
+
+            Command.Connection = Connection;
+
+            Connection.Open();
+
+            Command.Transaction = Connection.BeginTransaction();
+        }
+
+        public DbConnection Connection
+        {
+            get { return _connection; }
+
+            set { _connection = value; }
+        }
+
+        public DbTransaction Transaction
+        {
+            get { return _transaction; }
+
+            set { _transaction = value; }
+        }
+
+        public DbCommand Command
+        {
+            get { return _command; }
+
+            set { _command = value; }
+        }
+
         public override IUnitOfWork Create()
         {
-            var connection = new SqlConnection(connectionString);
-
-            return new ADOUnitOfWork(connection);
+            return new ADOUnitOfWork(new AdoNetFactory());
         }
     }
 }

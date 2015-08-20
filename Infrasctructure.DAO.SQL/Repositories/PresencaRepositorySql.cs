@@ -1,13 +1,14 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
 using Infrasctructure.DAO.SQL.Common;
+using Infrastructure.DAO.SQL.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace Infrastructure.DAO.SQL.Repositories
 {
-    public class PresencaRepositorySql : IPresencaRepository
+    public class PresencaRepositorySql : RepositoryBaseADO, IPresencaRepository
     {
         #region Querys
 
@@ -16,6 +17,10 @@ namespace Infrastructure.DAO.SQL.Repositories
                        "WHERE Id = {0}Id";
 
         #endregion Querys
+        public PresencaRepositorySql(AdoNetFactory factory) : base(factory)
+        {
+
+        }
 
         public Presenca Add(Presenca entity)
         {
@@ -27,7 +32,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var presencaRemovida = GetById(id);
-                Db.Delete(SqlDelete, Take(presencaRemovida));
+                Delete(SqlDelete, Take(presencaRemovida));
             }
             catch (Exception te)
             {

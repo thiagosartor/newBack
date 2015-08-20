@@ -1,6 +1,7 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
 using Infrasctructure.DAO.SQL.Common;
+using Infrastructure.DAO.SQL.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace Infrastructure.DAO.SQL.Repositories
 {
-    public class AulaRepositorySql : IAulaRepository
+    public class AulaRepositorySql : RepositoryBaseADO, IAulaRepository
     {
         #region Querys
 
@@ -35,11 +36,16 @@ namespace Infrastructure.DAO.SQL.Repositories
 
         #endregion Querys
 
+        public AulaRepositorySql(AdoNetFactory factory) : base(factory)
+        {
+                
+        }
+
         public Aula Add(Aula entity)
         {
             try
             {
-                Db.Insert(SqlInsert, Take(entity));
+               Insert(SqlInsert, Take(entity));
             }
             catch (Exception te)
             {
@@ -53,7 +59,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var aulaRemovida = GetById(id);
-                Db.Delete(SqlDelete, Take(aulaRemovida));
+               Delete(SqlDelete, Take(aulaRemovida));
             }
             catch (Exception te)
             {
@@ -66,7 +72,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var aulaRemovida = GetById(entity.Id);
-                Db.Delete(SqlDelete, Take(aulaRemovida));
+               Delete(SqlDelete, Take(aulaRemovida));
             }
             catch (Exception te)
             {
@@ -78,7 +84,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                return Db.GetAll<Aula>(SqlSelect, Make);
+                return GetAll<Aula>(SqlSelect, Make);
             }
             catch (Exception te)
             {
@@ -107,7 +113,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             {
                 var parms = new object[] { "Id", id };
 
-                return Db.Get(SqlSelectbId, Make, parms);
+                return Get(SqlSelectbId, Make, parms);
             }
             catch (Exception)
             {
@@ -130,7 +136,7 @@ namespace Infrastructure.DAO.SQL.Repositories
             try
             {
                 var aulaEditada = GetById(entity.Id);
-                Db.Update(SqlUpdate, Take(aulaEditada));
+               Update(SqlUpdate, Take(aulaEditada));
             }
             catch (Exception te)
             {

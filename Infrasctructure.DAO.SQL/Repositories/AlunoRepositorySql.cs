@@ -1,13 +1,14 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
 using Infrasctructure.DAO.SQL.Common;
+using Infrastructure.DAO.SQL.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
 
 namespace Infrastructure.DAO.SQL.Repositories
 {
-    public class AlunoRepositorySql : IAlunoRepository
+    public class AlunoRepositorySql : RepositoryBaseADO, IAlunoRepository
     {
         #region Querys
 
@@ -52,9 +53,14 @@ namespace Infrastructure.DAO.SQL.Repositories
 
         #endregion Querys
 
+        public AlunoRepositorySql(AdoNetFactory factory): base(factory)
+        {
+
+        }
+
         public Aluno Add(Aluno entity)
         {
-            Db.Insert(SqlInsert, Take(entity));
+            Insert(SqlInsert, Take(entity));
 
             return entity;
         }
@@ -62,43 +68,43 @@ namespace Infrastructure.DAO.SQL.Repositories
         public void Delete(int id)
         {
             var alunoRemovido = GetById(id);
-            Db.Delete(SqlDelete, Take(alunoRemovido));
+            Delete(SqlDelete, Take(alunoRemovido));
         }
 
         public void Delete(Aluno entity)
         {
-            Db.Delete(SqlDelete, Take(entity));
+            Delete(SqlDelete, Take(entity));
         }
 
         public IList<Aluno> GetAll()
         {
-            return Db.GetAll(SqlSelect, Make);
+            return GetAll(SqlSelect, Make);
         }
 
         public IList<Aluno> GetAllByTurma(int ano)
         {
             var parms = new object[] { "ano", ano };
 
-            return Db.GetAll(SqlSelectAllByTurma, Make, parms);
+            return GetAll(SqlSelectAllByTurma, Make, parms);
         }
 
         public IList<Aluno> GetAllByTurmaId(int turmaId)
         {
             var parms = new object[] { "Turma_Id", turmaId };
 
-            return Db.GetAll(SqlSelectAllByTurma, Make, parms);
+            return GetAll(SqlSelectAllByTurma, Make, parms);
         }
 
         public Aluno GetById(int id)
         {
             var parms = new object[] { "Id", id };
 
-            return Db.Get(SqlSelectbId, Make, parms);
+            return Get(SqlSelectbId, Make, parms);
         }
 
         public void Update(Aluno entity)
         {
-            Db.Update(SqlUpdate, Take(entity));
+            Update(SqlUpdate, Take(entity));
         }
 
         private static Aluno Make(IDataReader reader)
