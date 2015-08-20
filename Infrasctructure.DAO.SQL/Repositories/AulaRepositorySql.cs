@@ -13,26 +13,26 @@ namespace Infrastructure.DAO.SQL.Repositories
     {
         #region Querys
 
-        public const string SqlInsert =
-            "INSERT INTO TBAula (DataAula) " +
-                         "VALUES ({0}DataAula)";
+        public const string SqlInsert = @"INSERT INTO TBAula 
+            (Data, ChamadaRealizada, Turma_Id) VALUES 
+            ({0}Data, {0}ChamadaRealizada, {0}Turma_Id)";
 
-        public const string SqlUpdate =
-         "UPDATE TBAula SET DataAula = {0}DataAula " +
-                      "WHERE Id = {0}Id";
+        public const string SqlUpdate = @"UPDATE TBAula SET 
+            Data = {0}Data, 
+            ChamadaRealizada = {0}ChamadaRealizada, 
+            Turma_Id = {0}Turma_Id          
+            WHERE Id = {0}Id";
 
-        public const string SqlDelete =
-         "DELETE FROM TBAula " +
-                       "WHERE Id = {0}Id";
+        public const string SqlDelete = @"DELETE FROM TBAula 
+            WHERE Id = {0}Id";
 
-        public const string SqlSelect =
-         "SELECT * FROM TBAula";
+        public const string SqlSelect = @"SELECT * FROM TBAula";
 
-        public const string SqlSelectbId =
-        "SELECT * FROM TBAula WHERE Id = {0}Id";
+        public const string SqlSelectbId = @"SELECT * FROM TBAula 
+            WHERE Id = {0}Id";
 
-        public const string SqlSelectTexto =
-         "SELECT * FROM TBAula WHERE DataAula = {0}DataAula";
+        public const string SqlSelectTexto = @"SELECT * FROM TBAula 
+            WHERE Data = {0}Data";
 
         #endregion Querys
 
@@ -135,8 +135,7 @@ namespace Infrastructure.DAO.SQL.Repositories
         {
             try
             {
-                var aulaEditada = GetById(entity.Id);
-               Update(SqlUpdate, Take(aulaEditada));
+               Update(SqlUpdate, Take(entity));
             }
             catch (Exception te)
             {
@@ -149,7 +148,9 @@ namespace Infrastructure.DAO.SQL.Repositories
             Aula aula = new Aula();
 
             aula.Id = Convert.ToInt32(reader["Id"]);
-            aula.Data = Convert.ToDateTime(reader["DataAula"]);
+            aula.Data = Convert.ToDateTime(reader["Data"]);
+            aula.ChamadaRealizada = Convert.ToBoolean(reader["ChamadaRealizada"]);
+            aula.Turma.Id = Convert.ToInt32(reader["Turma_Id"]);
 
             return aula;
         }
@@ -159,7 +160,9 @@ namespace Infrastructure.DAO.SQL.Repositories
             return new object[]
             {
                 "Id", aula.Id,
-                "DataAula", aula.Data,
+                "Data", aula.Data,
+                "ChamadaRealizada", aula.ChamadaRealizada,
+                "Turma_Id", aula.Turma.Id
             };
         }
     }
