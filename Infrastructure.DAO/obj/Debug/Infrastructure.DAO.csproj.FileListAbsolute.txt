@@ -15,3 +15,6 @@ C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Ent
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Ninject.xml
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\obj\Debug\Infrastructure.DAO.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\obj\Debug\Infrastructure.DAO.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Domain.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\bin\Debug\Domain.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrastructure.DAO\obj\Debug\Infrastructure.DAO.csprojResolveAssemblyReference.cache

@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Domain.Contracts;
+using Domain.Entities;
+using Infrastructure.IoC;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Configuration;
-using Domain.Entities;
-using Domain.Contracts;
-using Infrastructure.DAO;
-using System.IO;
-using Infrastructure.DAO.IoC;
 
 namespace Test.IoC
 {
@@ -22,7 +19,6 @@ namespace Test.IoC
         [TestCategory("Teste de IoC")]
         public void Save_Turma_IoC_EF_Test()
         {
-       
             Turma t = ObjectMother.CreateTurma();
 
             //Através do IoC Ninject busca um implementação do Repositório

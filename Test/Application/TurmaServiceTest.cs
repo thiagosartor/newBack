@@ -1,15 +1,11 @@
 ﻿using Application.DTOs;
 using Application.Services;
 using Domain.Contracts;
-using Infrasctructure.DAO.ORM.Contexts;
 using Infrastructure.DAO.Common;
-using Infrastructure.DAO.Common.Factorys;
-using Infrastructure.DAO.IoC;
-using Infrastructure.DAO.ORM.Common;
 using Infrastructure.DAO.SQL.Common;
 using Infrastructure.DAO.SQL.Repositories;
+using Infrastructure.IoC;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 
 namespace Test.Application
 {
@@ -23,11 +19,11 @@ namespace Test.Application
         [TestInitialize]
         public void Initialize()
         {
-            var _factory = new AdoNetFactory();
+            var _factory = new AdoNetFactory();//Container.Get<UnitOfWorkFactory>();
 
-            _uow = new ADOUnitOfWork(_factory);
+            _uow = new ADOUnitOfWork(_factory);//Container.Get<IUnitOfWork>();
 
-            _repo = Container.Get<ITurmaRepository>();
+            _repo = Container.Get<ITurmaRepository>();//new TurmaRepositorySql(_factory);
 
             _turmaService = new TurmaService(_repo, _uow);
         }

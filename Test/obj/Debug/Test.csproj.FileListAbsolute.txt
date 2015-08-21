@@ -56,3 +56,5 @@ C:\Users\thiago.sartor\Documents\GitHub\newBack\Test\bin\Debug\Ninject.xml
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Test\obj\Debug\Test.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Test\obj\Debug\Test.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Test\bin\Debug\Infrastructure.IoC.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Test\bin\Debug\Infrastructure.IoC.pdb

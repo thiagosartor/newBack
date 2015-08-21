@@ -7,10 +7,10 @@ namespace Infrastructure.DAO.SQL.Common
 {
     public class ADOUnitOfWork : IUnitOfWork
     {
-        private AdoNetFactory _factory;
-        public ADOUnitOfWork(UnitOfWorkFactory factory)
+        public AdoNetFactory _factory;
+        public ADOUnitOfWork(AdoNetFactory factory)
         {
-            _factory = (AdoNetFactory)factory;
+            _factory = factory;
         }
 
         public void Commit()

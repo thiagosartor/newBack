@@ -10,7 +10,7 @@ namespace Infrastructure.DAO.ORM.Repositories
 {
     public class TurmaRepositoryEF : RepositoryBaseEF<Turma>, ITurmaRepository
     {
-        public TurmaRepositoryEF(UnitOfWorkFactory factory) : base(factory)
+        public TurmaRepositoryEF(EntityFrameworkFactory factory) : base(factory)
         {
 
         }

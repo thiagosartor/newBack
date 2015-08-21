@@ -116,6 +116,10 @@
       <Project>{ba41785c-9f98-4aff-84e4-01735be2f4cb}</Project>
       <Name>Infrastructure.DAO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.IoC\Infrastructure.IoC.csproj">
+      <Project>{acae6c67-374d-4747-9a9c-d7db932cc986}</Project>
+      <Name>Infrastructure.IoC</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
