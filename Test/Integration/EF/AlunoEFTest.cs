@@ -17,7 +17,7 @@ namespace Test
         public IAlunoRepository _repoAluno;
         public ITurmaRepository _repoTurma;
         public IUnitOfWork _uow;
-        public IDatabaseFactory<EntityFrameworkContext> _factory;
+        public EntityFrameworkFactory _factory;
 
         [TestInitialize]
         public void Initialize()

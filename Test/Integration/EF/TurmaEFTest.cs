@@ -19,7 +19,7 @@ namespace Test
     {
         public ITurmaRepository _repo;
         public IUnitOfWork _uow;
-        public IDatabaseFactory<EntityFrameworkContext> _factory;
+        public EntityFrameworkFactory _factory;
 
 
         [TestInitialize]

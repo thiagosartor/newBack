@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Infrasctructure.DAO.ORM.Contexts;
+using Infrastructure.DAO.Common;
 using Infrastructure.DAO.Common.Factorys;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
 using System;
@@ -16,13 +17,13 @@ namespace Infrastructure.DAO.ORM.Common.Base
         protected EntityFrameworkContext dataContext;
         protected readonly IDbSet<T> dbset;
 
-        protected RepositoryBaseEF(IDatabaseFactory<EntityFrameworkContext> databaseFactory)
+        protected RepositoryBaseEF(UnitOfWorkFactory databaseFactory)
         {
-            DatabaseFactory = databaseFactory;
+            DatabaseFactory = (EntityFrameworkFactory)databaseFactory;
             dbset = DataContext.Set<T>();
         }
 
-        protected IDatabaseFactory<EntityFrameworkContext> DatabaseFactory
+        protected EntityFrameworkFactory DatabaseFactory
         {
             get;
             private set;

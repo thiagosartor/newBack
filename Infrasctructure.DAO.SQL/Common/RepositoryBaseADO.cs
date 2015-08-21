@@ -1,4 +1,5 @@
-﻿using Infrastructure.DAO.SQL.Common;
+﻿using Infrastructure.DAO.Common;
+using Infrastructure.DAO.SQL.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,9 +13,9 @@ namespace Infrasctructure.DAO.SQL.Common
     {
         private AdoNetFactory _factory;
 
-        public RepositoryBaseADO(AdoNetFactory factory)
+        public RepositoryBaseADO(UnitOfWorkFactory factory)
         {
-            _factory = factory;
+            _factory = (AdoNetFactory)factory;
         }
 
         public int Insert(string sql, object[] parms = null)
@@ -27,7 +28,7 @@ namespace Infrasctructure.DAO.SQL.Common
             _factory.Command.CommandText = sql;
 
             int id = Convert.ToInt32(_factory.Command.ExecuteScalar());
-
+            
             return id;
         }
 

@@ -18,13 +18,13 @@ C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\In
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Domain.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\EntityFramework.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Infrastructure.DAO.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Ninject.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Domain.pdb
+C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Infrastructure.DAO.pdb
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\EntityFramework.xml
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Ninject.xml
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\obj\Debug\Infrasctructure.DAO.ORM.csprojResolveAssemblyReference.cache
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\obj\Debug\Infrasctructure.DAO.ORM.dll
 C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\obj\Debug\Infrasctructure.DAO.ORM.pdb
-C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Infrastructure.DAO.dll
-C:\Users\thiago.sartor\Documents\GitHub\newBack\Infrasctructure.ORM\bin\Debug\Infrastructure.DAO.pdb

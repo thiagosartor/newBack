@@ -18,7 +18,7 @@ namespace Test
 
             _factory = new AdoNetFactory();
 
-            _uow = new ADOUnitOfWork(_factory);
+            _uow = new ADOUnitOfWork(_factory);         
 
             _repo = new TurmaRepositorySql(_factory);
         }

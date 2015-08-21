@@ -8,9 +8,9 @@ namespace Infrastructure.DAO.SQL.Common
     public class ADOUnitOfWork : IUnitOfWork
     {
         private AdoNetFactory _factory;
-        public ADOUnitOfWork(AdoNetFactory factory)
+        public ADOUnitOfWork(UnitOfWorkFactory factory)
         {
-            _factory = factory;
+            _factory = (AdoNetFactory)factory;
         }
 
         public void Commit()
@@ -22,6 +22,11 @@ namespace Infrastructure.DAO.SQL.Common
 
             _factory.Command.Transaction.Commit();
             _factory.Command.Transaction = null;
+        }
+
+        public void Dispose()
+        {
+            Rollback();
         }
 
         public void Rollback()

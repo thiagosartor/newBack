@@ -1,6 +1,7 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
 using Infrasctructure.DAO.ORM.Contexts;
+using Infrastructure.DAO.Common;
 using Infrastructure.DAO.Common.Factorys;
 using Infrastructure.DAO.ORM.Common.Base;
 using NDDigital.DiarioAcademia.Infraestrutura.Orm.Common;
@@ -11,7 +12,7 @@ namespace Infrastructure.DAO.ORM.Repositories
 {
     public class PresencaRepositoryEF : RepositoryBaseEF<Presenca>, IPresencaRepository
     {
-        public PresencaRepositoryEF(IDatabaseFactory<EntityFrameworkContext> dbFactory) : base (dbFactory)
+        public PresencaRepositoryEF(UnitOfWorkFactory dbFactory) : base (dbFactory)
         {
 
         }

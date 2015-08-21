@@ -35,7 +35,7 @@ namespace Infrastructure.DAO.SQL.Repositories
 
         #endregion Querys
 
-        public TurmaRepositorySql(AdoNetFactory factory) : base(factory)
+        public TurmaRepositorySql(UnitOfWorkFactory factory) : base(factory)
         {
 
         }

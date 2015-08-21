@@ -14,7 +14,7 @@ namespace Infrastructure.DAO.ORM.Common
     {
         private EntityFrameworkContext dbContext = null;
 
-        private readonly IDatabaseFactory<EntityFrameworkContext> dbFactory;
+        private readonly EntityFrameworkFactory dbFactory;
 
         protected EntityFrameworkContext DbContext
         {
@@ -24,7 +24,7 @@ namespace Infrastructure.DAO.ORM.Common
             }
         }
 
-        public EntityFrameworkUnitOfWork(IDatabaseFactory<EntityFrameworkContext> dbFactory)
+        public EntityFrameworkUnitOfWork(EntityFrameworkFactory dbFactory)
         {
             this.dbFactory = dbFactory;
         }
@@ -70,6 +70,11 @@ namespace Infrastructure.DAO.ORM.Common
         }
 
         public void Rollback()
+        {
+            DbContext.Dispose();
+        }
+
+        public void Dispose()
         {
             DbContext.Dispose();
         }
